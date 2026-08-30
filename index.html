@@ -1,0 +1,1629 @@
+<!doctype html>
+<html lang="en-IN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Pre-order festival sweet boxes, savoury boxes, hampers and catering from SSS Catering.">
+<meta name="theme-color" content="#123A2B">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="SSS Catering">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<style>html{color-scheme:light dark}body{margin:0;font:14px system-ui}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>SSS Catering Festival Orders</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Karla:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --bg:#F3F1E7; --stage:#E7E3D5;
+  --surface:#FFFFFF; --surface-2:#F5F2E8; --surface-3:#EAE5D6;
+  --line:#DCD6C4; --line-soft:#E9E4D6;
+  --ink:#181C17; --ink-2:#57604F; --ink-3:#8B9083;
+  --brand:#123A2B; --brand-2:#1C5340; --on-brand:#F3F1E7;
+  --accent:#D4820F; --on-accent:#231602;
+  --alert:#B03227; --alert-bg:#FBEDEA;
+  --ok:#2C7A4E; --ok-bg:#E9F3EC;
+  --warn:#B87709; --warn-bg:#FBF1DF;
+  --shadow:0 1px 2px rgba(24,28,23,.05), 0 8px 24px rgba(24,28,23,.07);
+  --shadow-lg:0 24px 60px rgba(18,58,43,.22), 0 4px 12px rgba(18,58,43,.10);
+  --nav-on:#123A2B;
+  --r:14px; --r-lg:20px;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#151310; --stage:#0E0D0B;
+    --surface:#1E1B16; --surface-2:#262118; --surface-3:#2F2919;
+    --line:#38301F; --line-soft:#2B251A;
+    --ink:#F0EBDE; --ink-2:#B3AB99; --ink-3:#807A6C;
+    --brand:#2A6A50; --brand-2:#348063; --on-brand:#F0EBDE;
+    --accent:#EFA738; --on-accent:#1E1200;
+    --alert:#E4776A; --alert-bg:#2E1B18;
+    --ok:#63BC88; --ok-bg:#16281D;
+    --warn:#E0A445; --warn-bg:#2C2213;
+    --nav-on:#EFA738;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.35);
+    --shadow-lg:0 24px 60px rgba(0,0,0,.6), 0 4px 12px rgba(0,0,0,.4);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#151310; --stage:#0E0D0B;
+  --surface:#1E1B16; --surface-2:#262118; --surface-3:#2F2919;
+  --line:#38301F; --line-soft:#2B251A;
+  --ink:#F0EBDE; --ink-2:#B3AB99; --ink-3:#807A6C;
+  --brand:#2A6A50; --brand-2:#348063; --on-brand:#F0EBDE;
+  --accent:#EFA738; --on-accent:#1E1200;
+  --alert:#E4776A; --alert-bg:#2E1B18;
+  --ok:#63BC88; --ok-bg:#16281D;
+  --warn:#E0A445; --warn-bg:#2C2213;
+  --nav-on:#EFA738;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.35);
+  --shadow-lg:0 24px 60px rgba(0,0,0,.6), 0 4px 12px rgba(0,0,0,.4);
+  color-scheme:dark;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--stage); color:var(--ink);
+  font-family:Karla,"Helvetica Neue",Arial,sans-serif;
+  font-size:15px; line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+input,select,textarea{font:inherit;color:inherit}
+h1,h2,h3,h4{margin:0;font-family:Fraunces,Georgia,serif;font-weight:600;text-wrap:balance;letter-spacing:-.01em}
+p{margin:0}
+:focus-visible{outline:2.5px solid var(--accent);outline-offset:2px;border-radius:6px}
+.num{font-variant-numeric:tabular-nums}
+
+/* ---------- stage / phone shell ---------- */
+.stage{min-height:100vh;display:flex;align-items:center;justify-content:center;gap:40px;padding:28px 20px}
+.aside{width:250px;flex:none}
+.aside .mark{font-family:Fraunces,Georgia,serif;font-size:30px;line-height:1.05;font-weight:700;color:var(--ink)}
+.aside .mark span{color:var(--accent)}
+.aside p{color:var(--ink-2);font-size:13.5px;margin-top:10px}
+.aside .legend{margin-top:22px;border-top:1px solid var(--line);padding-top:16px;display:flex;flex-direction:column;gap:9px}
+.aside .legend b{display:block;font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3);font-weight:700;margin-bottom:4px}
+.aside .legend a{font-size:13px;color:var(--ink-2);text-decoration:none;display:flex;justify-content:space-between;gap:8px}
+.aside .legend a:hover{color:var(--accent)}
+.aside .legend a i{font-style:normal;color:var(--ink-3);font-size:11px}
+
+.phone{
+  width:412px;flex:none;height:min(872px, calc(100vh - 56px));
+  background:var(--bg);border-radius:38px;box-shadow:var(--shadow-lg);
+  display:flex;flex-direction:column;overflow:hidden;position:relative;
+  border:1px solid var(--line);
+}
+.scroll{flex:1;overflow-y:auto;overflow-x:hidden;scrollbar-width:thin}
+.scroll::-webkit-scrollbar{width:5px}
+.scroll::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px}
+
+/* ---------- app header ---------- */
+.appbar{
+  display:flex;align-items:center;gap:10px;padding:14px 16px 12px;
+  background:var(--brand);color:var(--on-brand);flex:none;
+}
+.appbar .logo{font-family:Fraunces,Georgia,serif;font-weight:700;font-size:18px;letter-spacing:-.02em;line-height:1}
+.appbar .logo small{display:block;font-family:Karla,sans-serif;font-weight:600;font-size:8.5px;letter-spacing:.18em;text-transform:uppercase;opacity:.72;margin-top:3px}
+.appbar .sp{flex:1}
+.icobtn{width:36px;height:36px;border-radius:11px;display:grid;place-items:center;background:rgba(255,255,255,.10);position:relative;color:var(--on-brand)}
+.icobtn:hover{background:rgba(255,255,255,.2)}
+.icobtn svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.badge[hidden]{display:none!important}
+.badge{position:absolute;top:-4px;right:-4px;min-width:17px;height:17px;padding:0 4px;border-radius:9px;background:var(--accent);color:var(--on-accent);font-size:10.5px;font-weight:700;display:grid;place-items:center}
+.subbar{display:flex;align-items:center;gap:6px;padding:7px 16px;background:var(--brand-2);color:var(--on-brand);font-size:11px;flex:none}
+.subbar svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2}
+.subbar b{font-weight:700}
+.subbar button{margin-left:auto;font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;opacity:.85;text-decoration:underline;text-underline-offset:3px}
+
+/* ---------- page header (inner screens) ---------- */
+.phead{display:flex;align-items:center;gap:10px;padding:12px 16px;background:var(--bg);border-bottom:1px solid var(--line-soft);position:sticky;top:0;z-index:20}
+.phead h2{font-size:17px;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ghost{width:32px;height:32px;border-radius:10px;display:grid;place-items:center;background:var(--surface);border:1px solid var(--line);flex:none}
+.ghost:hover{border-color:var(--accent)}
+.ghost svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* ---------- generic ---------- */
+.pad{padding:16px}
+.stack{display:flex;flex-direction:column;gap:12px}
+.row{display:flex;align-items:center;gap:10px}
+.eyebrow{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--ink-3)}
+.sechead{display:flex;align-items:baseline;gap:8px;padding:20px 16px 10px}
+.sechead h3{font-size:16.5px;flex:1}
+.sechead a{font-size:12px;font-weight:700;color:var(--accent);text-decoration:none;cursor:pointer}
+.muted{color:var(--ink-2);font-size:13px}
+.tiny{font-size:11.5px;color:var(--ink-3)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow)}
+.divider{height:1px;background:var(--line-soft);margin:4px 0}
+
+.pill{display:inline-flex;align-items:center;gap:5px;padding:3px 9px;border-radius:999px;font-size:10.5px;font-weight:700;letter-spacing:.03em;white-space:nowrap}
+.pill.open{background:var(--ok-bg);color:var(--ok)}
+.pill.soon{background:var(--warn-bg);color:var(--warn)}
+.pill.closed{background:var(--alert-bg);color:var(--alert)}
+.pill.plan{background:var(--surface-3);color:var(--ink-2)}
+.pill.dot::before{content:"";width:5px;height:5px;border-radius:50%;background:currentColor}
+
+.btn{display:flex;align-items:center;justify-content:center;gap:7px;padding:12px 16px;border-radius:12px;font-weight:700;font-size:14px;background:var(--brand);color:var(--on-brand);width:100%;transition:transform .12s ease,filter .12s ease}
+.btn:hover{filter:brightness(1.12)}
+.btn:active{transform:scale(.985)}
+.btn.acc{background:var(--accent);color:var(--on-accent)}
+.btn.out{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+.btn.out:hover{border-color:var(--accent);filter:none}
+.btn[disabled]{background:var(--surface-3);color:var(--ink-3);cursor:not-allowed;filter:none;transform:none}
+.btn.sm{padding:8px 13px;font-size:12.5px;border-radius:10px;width:auto}
+
+/* ---------- festival art ---------- */
+.art{
+  position:relative;overflow:hidden;
+  background-color:hsl(var(--fh) 58% 22%);
+  background-image:
+    radial-gradient(circle at 50% 50%, hsl(var(--fh) 92% 80% / .85) 0 1.9px, transparent 2.4px),
+    radial-gradient(circle at 50% 50%, hsl(var(--fh) 85% 66% / .32) 0 8px, transparent 9px),
+    conic-gradient(from 22deg at 50% 50%, hsl(var(--fh) 76% 58% / .24) 0 12.5%, transparent 12.5% 25%, hsl(var(--fh) 76% 58% / .24) 25% 37.5%, transparent 37.5% 50%, hsl(var(--fh) 76% 58% / .24) 50% 62.5%, transparent 62.5% 75%, hsl(var(--fh) 76% 58% / .24) 75% 87.5%, transparent 87.5%),
+    repeating-linear-gradient(45deg, hsl(var(--fh) 45% 35% / .16) 0 4px, transparent 4px 11px),
+    linear-gradient(155deg, hsl(var(--fh) 54% 31%), hsl(var(--fh) 63% 15%));
+  background-size:22px 22px, 66px 66px, 66px 66px, auto, auto;
+  background-position:0 0, 33px 33px, 0 0, 0 0, 0 0;
+}
+.art .glyph{position:absolute;inset:0;display:grid;place-items:center;font-family:Fraunces,Georgia,serif;font-size:44px;color:#fff;opacity:.82;text-shadow:0 2px 18px rgba(0,0,0,.55)}
+.art.sm{height:78px;width:78px;border-radius:11px;flex:none}
+.art.sm .glyph{font-size:30px}
+
+/* ---------- banner ---------- */
+.banner{margin:16px;border-radius:var(--r-lg);overflow:hidden;position:relative;box-shadow:var(--shadow);min-height:168px;display:flex;flex-direction:column;justify-content:flex-end;padding:16px}
+.banner::after{content:"";position:absolute;inset:0;background:linear-gradient(to top, rgba(10,20,12,.86) 12%, rgba(10,20,12,.15) 70%)}
+.banner>*{position:relative;z-index:1}
+.banner .kicker{color:#F6D89B;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:700}
+.banner h2{color:#fff;font-size:23px;line-height:1.12;margin:6px 0 10px;max-width:15ch}
+.banner .btn{width:auto;align-self:flex-start;padding:9px 16px}
+
+/* ---------- festival cards ---------- */
+.fcard{display:flex;gap:12px;padding:12px;align-items:center;text-align:left}
+.fcard .body{flex:1;min-width:0}
+.fcard h4{font-size:15px;margin-bottom:2px}
+.hscroll{display:flex;gap:12px;overflow-x:auto;padding:0 16px 6px;scroll-snap-type:x mandatory;scrollbar-width:none}
+.hscroll::-webkit-scrollbar{display:none}
+.fbig{width:212px;flex:none;scroll-snap-align:start;border-radius:var(--r);overflow:hidden;background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow);text-align:left;display:flex;flex-direction:column}
+.fbig .art{height:104px}
+.fbig .b{padding:11px 12px 13px;display:flex;flex-direction:column;gap:6px;flex:1}
+.fbig h4{font-size:15px}
+
+/* ---------- product cards ---------- */
+.pcard{display:flex;gap:12px;padding:12px;width:100%;text-align:left;align-items:stretch}
+.pcard .body{flex:1;min-width:0;display:flex;flex-direction:column;gap:4px}
+.pcard h4{font-size:15px;line-height:1.25}
+.pcard .price{font-family:Fraunces,Georgia,serif;font-weight:700;font-size:16px}
+.pcard .meta{font-size:11.5px;color:var(--ink-3)}
+.pcard .desc{font-size:12.5px;color:var(--ink-2);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.pcard .foot{display:flex;align-items:center;gap:8px;margin-top:auto;padding-top:4px}
+
+.tabs{display:flex;gap:7px;overflow-x:auto;padding:10px 16px;scrollbar-width:none;position:sticky;top:56px;background:var(--bg);z-index:19;border-bottom:1px solid var(--line-soft)}
+.tabs::-webkit-scrollbar{display:none}
+.tab{padding:6px 13px;border-radius:999px;font-size:12.5px;font-weight:600;background:var(--surface);border:1px solid var(--line);white-space:nowrap;flex:none}
+.tab[aria-selected="true"]{background:var(--brand);color:var(--on-brand);border-color:var(--brand)}
+
+/* ---------- product detail ---------- */
+.hero{height:196px;position:relative}
+.hero .back{position:absolute;top:12px;left:12px;z-index:2;background:rgba(255,255,255,.92);color:#181C17;border:0}
+.hero .actions{position:absolute;top:12px;right:12px;z-index:2;display:flex;gap:7px}
+.hero .actions .ghost{background:rgba(255,255,255,.92);color:#181C17;border:0}
+.optgrp{display:flex;flex-wrap:wrap;gap:7px}
+.opt{padding:8px 13px;border-radius:10px;border:1.5px solid var(--line);background:var(--surface);font-size:12.5px;font-weight:600}
+.opt[aria-pressed="true"]{border-color:var(--brand);background:var(--brand);color:var(--on-brand)}
+.opt[disabled]{opacity:.45;cursor:not-allowed}
+.inside{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:7px}
+.inside li{display:flex;gap:9px;font-size:13.5px;color:var(--ink-2);align-items:flex-start}
+.inside li::before{content:"";width:6px;height:6px;border-radius:2px;background:var(--accent);margin-top:6px;flex:none;transform:rotate(45deg)}
+.notice{border-radius:12px;padding:11px 13px;font-size:12.5px;display:flex;gap:9px;align-items:flex-start;line-height:1.45}
+.notice svg{width:15px;height:15px;flex:none;margin-top:1px;stroke:currentColor;fill:none;stroke-width:2}
+.notice.warn{background:var(--warn-bg);color:var(--warn)}
+.notice.bad{background:var(--alert-bg);color:var(--alert)}
+.notice.good{background:var(--ok-bg);color:var(--ok)}
+.notice b{color:inherit}
+
+.stepper{display:flex;align-items:center;border:1.5px solid var(--line);border-radius:11px;overflow:hidden;background:var(--surface)}
+.stepper button{width:36px;height:38px;display:grid;place-items:center;font-size:17px;font-weight:700;color:var(--ink-2)}
+.stepper button:hover{background:var(--surface-2);color:var(--accent)}
+.stepper span{min-width:30px;text-align:center;font-weight:700;font-size:14px}
+
+.sticky{position:sticky;bottom:0;background:var(--surface);border-top:1px solid var(--line);padding:12px 16px;display:flex;gap:10px;align-items:center;z-index:20;box-shadow:0 -6px 20px rgba(24,28,23,.06)}
+
+/* ---------- forms ---------- */
+label.f{display:block;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:6px}
+.inp{width:100%;padding:11px 12px;border-radius:11px;border:1.5px solid var(--line);background:var(--surface);font-size:14px}
+.inp:focus{border-color:var(--accent);outline:none}
+.radio{display:flex;gap:10px;align-items:flex-start;padding:12px;border-radius:12px;border:1.5px solid var(--line);background:var(--surface);width:100%;text-align:left}
+.radio[aria-checked="true"]{border-color:var(--brand);background:var(--surface-2)}
+.radio .dot{width:17px;height:17px;border-radius:50%;border:2px solid var(--line);flex:none;margin-top:2px;display:grid;place-items:center}
+.radio[aria-checked="true"] .dot{border-color:var(--brand)}
+.radio[aria-checked="true"] .dot::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--brand)}
+.radio .t{flex:1;min-width:0}
+.radio b{display:block;font-size:13.5px}
+.radio i{font-style:normal;font-size:11.5px;color:var(--ink-3)}
+.bill{display:flex;flex-direction:column;gap:8px}
+.bill .l{display:flex;justify-content:space-between;font-size:13.5px;color:var(--ink-2)}
+.bill .l.total{font-size:16px;color:var(--ink);font-weight:700;font-family:Fraunces,Georgia,serif;padding-top:9px;border-top:1px solid var(--line-soft)}
+.bill .l.disc{color:var(--ok)}
+
+/* ---------- tracking ---------- */
+.track{display:flex;gap:0;margin:6px 0 4px}
+.track .s{flex:1;text-align:center;position:relative;font-size:10.5px;font-weight:700;color:var(--ink-3)}
+.track .s .n{width:24px;height:24px;border-radius:50%;background:var(--surface-3);color:var(--ink-3);display:grid;place-items:center;margin:0 auto 6px;font-size:11px;position:relative;z-index:2;border:2px solid var(--bg)}
+.track .s::before{content:"";position:absolute;top:11px;left:0;right:50%;height:2px;background:var(--line)}
+.track .s::after{content:"";position:absolute;top:11px;left:50%;right:0;height:2px;background:var(--line)}
+.track .s:first-child::before,.track .s:last-child::after{display:none}
+.track .s.done{color:var(--ok)}
+.track .s.done .n{background:var(--ok);color:#fff}
+.track .s.done::before{background:var(--ok)}
+.track .s.now{color:var(--accent)}
+.track .s.now .n{background:var(--accent);color:var(--on-accent)}
+.feed{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+.feed li{display:flex;gap:10px;font-size:13px}
+.feed li .tm{font-family:var(--mono);font-size:11px;color:var(--ink-3);flex:none;width:56px;padding-top:1px}
+
+/* ---------- admin ---------- */
+.kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.kpi{padding:13px;border-radius:var(--r);background:var(--surface);border:1px solid var(--line)}
+.kpi .v{font-family:Fraunces,Georgia,serif;font-size:23px;font-weight:700;line-height:1.05}
+.kpi .k{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);font-weight:700;margin-top:4px}
+.bars{display:flex;flex-direction:column;gap:9px}
+.bar{display:flex;align-items:center;gap:9px;font-size:12.5px}
+.bar .lbl{width:72px;flex:none;color:var(--ink-2)}
+.bar .t{flex:1;height:9px;border-radius:5px;background:var(--surface-3);overflow:hidden}
+.bar .t i{display:block;height:100%;border-radius:5px;background:var(--brand)}
+.bar .v{width:22px;text-align:right;font-weight:700}
+table.dt{width:100%;border-collapse:collapse;font-size:12.5px}
+table.dt th{text-align:left;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);padding:0 8px 7px 0;font-weight:700}
+table.dt td{padding:8px 8px 8px 0;border-top:1px solid var(--line-soft);vertical-align:top}
+.wa{background:var(--ok-bg);border-left:3px solid var(--ok);border-radius:0 11px 11px 0;padding:11px 13px;font-size:12.5px;color:var(--ink);line-height:1.5}
+.wa b{display:block;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ok);margin-bottom:5px}
+pre.code{margin:0;font-family:var(--mono);font-size:11.5px;line-height:1.6;color:var(--ink-2);white-space:pre-wrap;word-break:break-word}
+.tree{font-family:var(--mono);font-size:12px;line-height:1.85;color:var(--ink-2);white-space:pre}
+
+/* ---------- bottom nav ---------- */
+.nav{display:flex;background:var(--surface);border-top:1px solid var(--line);flex:none;padding:6px 4px 8px}
+.nav button{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;padding:5px 2px;font-size:10px;font-weight:600;color:var(--ink-3);border-radius:10px;position:relative}
+.nav button svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.nav button[aria-current="page"]{color:var(--nav-on)}
+.nav .bdg{position:absolute;top:2px;right:calc(50% - 17px);min-width:15px;height:15px;padding:0 3px;border-radius:8px;background:var(--alert);color:#fff;font-size:9.5px;font-weight:700;display:grid;place-items:center}
+
+/* ---------- install ---------- */
+.qrbox{background:#fff;border-radius:14px;padding:14px;display:grid;place-items:center;border:1px solid var(--line)}
+.qrbox canvas{display:block;width:100%;max-width:230px;height:auto;image-rendering:pixelated}
+.steps{counter-reset:st;list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:11px}
+.steps li{display:flex;gap:11px;font-size:13.5px;color:var(--ink-2);line-height:1.45}
+.steps li::before{counter-increment:st;content:counter(st);width:21px;height:21px;border-radius:50%;background:var(--brand);color:var(--on-brand);font-size:11px;font-weight:700;display:grid;place-items:center;flex:none;margin-top:1px;font-family:Karla,sans-serif}
+.appicon{width:60px;height:60px;border-radius:15px;flex:none;box-shadow:var(--shadow)}
+
+/* ---------- toast ---------- */
+.toast{position:absolute;left:16px;right:16px;bottom:82px;background:var(--brand);color:var(--on-brand);padding:11px 14px;border-radius:12px;font-size:13px;font-weight:600;box-shadow:var(--shadow-lg);z-index:60;display:flex;gap:9px;align-items:center;animation:pop .28s cubic-bezier(.2,.9,.3,1.2)}
+@keyframes pop{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* ---------- responsive ---------- */
+@media (max-width:900px){
+  .stage{padding:0;gap:0;align-items:stretch}
+  .aside{display:none}
+  .phone{width:100%;height:100vh;border-radius:0;border:0;box-shadow:none}
+}
+</style>
+
+<div class="stage">
+  <div class="aside">
+    <div class="mark">SSS<br>Catering<span>.</span></div>
+    <p>Festival pre-order app — built from your menu sheet. All 11 festivals, 18 priced combos, cut-off logic, slots, part-payment and the admin panel.</p>
+    <div class="legend">
+      <b>Jump to a screen</b>
+      <a data-go="home">Home dashboard <i>1</i></a>
+      <a data-go="menu">Menu / category <i>2</i></a>
+      <a data-go="product:diwali-hamper">Product detail <i>3</i></a>
+      <a data-go="cart">Cart &amp; checkout <i>4</i></a>
+      <a data-go="order:DIW1245">Order tracking <i>5</i></a>
+      <a data-go="admin">Admin dashboard <i>6</i></a>
+    </div>
+  </div>
+
+  <div class="phone">
+    <div class="appbar">
+      <div class="logo">SSS Catering<small>Festival Pre-Orders</small></div>
+      <div class="sp"></div>
+      <button class="icobtn" id="cartBtn" aria-label="Cart">
+        <svg viewBox="0 0 24 24"><path d="M3 4h2l2.4 10.4a2 2 0 0 0 2 1.6h7.5a2 2 0 0 0 2-1.5L20.5 8H6"/><circle cx="10" cy="20" r="1.3"/><circle cx="17" cy="20" r="1.3"/></svg>
+        <span class="badge" id="cartBadge" hidden>0</span>
+      </button>
+      <button class="icobtn" id="acctBtn" aria-label="Account">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.4"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0"/></svg>
+      </button>
+    </div>
+    <div class="subbar" id="subbar"></div>
+    <div class="scroll" id="scroll"></div>
+    <nav class="nav" id="nav"></nav>
+  </div>
+</div>
+
+<script>
+/* ============================== DATA (from SSS Catering.xlsx) ============================== */
+const D = (s) => new Date(s + "T00:00:00");
+const INR = n => "₹" + n.toLocaleString("en-IN");
+
+const CATS = {
+  sweets:"Sweet Boxes", savory:"Savory Boxes", meals:"Biryani & Meals",
+  corporate:"Corporate Gifting", hamper:"Hampers & Combos"
+};
+
+const FEST = [
+  { id:"pongal", name:"Pongal / Makar Sankranti", short:"Pongal", dateLabel:"Jan 14–15",
+    theme:"Start your year with new", hue:38, glyph:"☀",
+    strategy:"Close 2 days before", sell:"Sweets: Ellu Bella, Pongal, Laddu",
+    event:"2027-01-14", opens:"2026-12-01", cutoff:"2027-01-12",
+    items:[
+      { id:"sankranti-sweet-box", name:"Sankranti Sweet Box", cat:"sweets", serves:"1 kg", price:699,
+        contents:"Sweet Pongal + Ariselu + Laddu", inside:["Sweet Pongal","Ariselu","Laddu"] },
+      { id:"pongal-festival-pack", name:"Pongal Festival Pack", cat:"meals", serves:"4 pax", price:1099,
+        contents:"Sweet Pongal + Ven Pongal + Vadai + Pusani Chutney + Paasi payaru sundal",
+        inside:["Sweet Pongal","Ven Pongal","Vadai","Pusani Chutney","Paasi payaru Sundal"] }
+    ]},
+
+  { id:"ramzan", name:"Ramzan / Eid", short:"Ramzan", dateLabel:"Feb–Mar (approx)",
+    theme:"Biryani & feast boxes", hue:158, glyph:"☾",
+    cta:"Pre-Order Eid Feast — Slots Limited",
+    strategy:"Close 1 day before Eid", sell:"Biryani, Sheer Khurma, Chicken Pakoda",
+    event:"2027-03-09", opens:"2027-02-01", cutoff:"2027-03-08",
+    items:[
+      { id:"hyd-biryani", name:"Hyderabadi Chicken Biryani — Ramzan Special", cat:"meals",
+        serves:"2 pax", price:399, contents:"Cooked in pure ghee. Limited slots per day",
+        inside:["Long-grain Hyderabadi dum biryani","Cooked in pure ghee","Limited slots per day"],
+        note:"Limited slots per day",
+        sizes:[{label:"2 pax",mult:1},{label:"4 pax",mult:2},{label:"10 pax",mult:5}],
+        options:[
+          { id:"spice", label:"Spice Level", choices:[{v:"Mild"},{v:"Medium"},{v:"Spicy"}] },
+          { id:"sides", label:"Sides", choices:[{v:"With Raita & Brinjal", delta:0},{v:"Biryani only", delta:0}] },
+          { id:"type", label:"Preparation", choices:[{v:"Chicken"},{v:"Veg"},{v:"Jain"}] }
+        ]},
+      { id:"royal-biryani-combo", name:"Royal Biryani Combo", cat:"meals", serves:"4 person", price:1599,
+        contents:"Chicken Biryani + Raita + Brinjal + Bread Halwa",
+        inside:["Chicken Biryani","Raita","Brinjal curry","Bread Halwa"] },
+      { id:"meeta-khana", name:"Meeta Khana", cat:"sweets", serves:"1 Kg", price:1100,
+        contents:"Ramzan sweet selection", inside:["Sheer Khurma","Assorted Ramzan sweets"] },
+      { id:"eid-feast-box", name:"Eid Mubarak Feast Box", cat:"meals", serves:"8–10 pax", price:3499,
+        contents:"Full feast box — item list being finalised",
+        inside:["Full feast for 8–10"], note:"Item list still to be filled in by Jaffer" }
+    ]},
+
+  { id:"holi", name:"Holi", short:"Holi", dateLabel:"Mar 14", theme:"Colors & Snacks",
+    hue:322, glyph:"✼", cta:"Holi Party Pack — Free Gulal with every order",
+    strategy:"Close 2 days before", sell:"Gujiya, Thandai, Namkeen, Snack boxes",
+    event:"2027-03-14", opens:"2027-02-10", cutoff:"2027-03-12",
+    items:[
+      { id:"holi-snack-box", name:"Holi Party Snack Box", cat:"savory", serves:"6–8 pax", price:3200,
+        contents:"Gujiya + Papdi + Namkeen + Thandai Mix",
+        inside:["Gujiya","Papdi","Namkeen","Thandai Mix"] },
+      { id:"gujiya-pack", name:"Gujiya Celebration Pack", cat:"sweets", serves:"1 kg", price:1200,
+        contents:"Mawa Gujiya + Dry Fruit Laddu", inside:["Mawa Gujiya","Dry Fruit Laddu"] }
+    ]},
+
+  { id:"ugadi", name:"Ugadi / Gudi Padwa", short:"Ugadi", dateLabel:"Mar", hue:88, glyph:"❁",
+    strategy:"Close 2 days before", sell:"Obbattu, Pulihora, Sweet boxes",
+    event:"2027-03-19", opens:"2027-02-20", cutoff:"2027-03-17",
+    planned:["Obbattu","Pulihora","Sweet boxes"], items:[] },
+
+  { id:"ramnavami", name:"Ram Navami", short:"Ram Navami", dateLabel:"Mar–Apr", hue:28, glyph:"卐",
+    strategy:"Close 1 day before", sell:"Prasad, Puri, Halwa, Fruit boxes",
+    event:"2027-04-15", opens:"2027-03-20", cutoff:"2027-04-14",
+    planned:["Prasad","Puri","Halwa","Fruit boxes"], items:[] },
+
+  { id:"akshaya", name:"Akshaya Tritiya", short:"Akshaya Tritiya", dateLabel:"Apr", hue:45, glyph:"◈",
+    strategy:"Close 3 days before", sell:"Bulk catering, Sweet boxes for housewarming",
+    event:"2027-04-28", opens:"2027-04-01", cutoff:"2027-04-25",
+    planned:["Bulk catering","Sweet boxes for housewarming"], items:[] },
+
+  { id:"vinayaka", name:"Vinayaka Chaturthi", short:"Vinayaka Chaturthi", dateLabel:"Aug 21",
+    hue:12, glyph:"ॐ", cta:"Order by Aug 19 — Prasad delivered fresh",
+    strategy:"Close 2 days before", sell:"Mothagam (Kolukattai), Sundal, Laddu, Vadai",
+    event:"2027-08-21", opens:"2027-07-20", cutoff:"2027-08-19",
+    items:[
+      { id:"kolukattai-box", name:"Kolukattai (Modagam) Special Box", cat:"sweets", serves:"21 pcs", price:699,
+        contents:"Steamed, jaggery with coconut puram stuffing",
+        inside:["21 steamed Kolukattai","Jaggery + coconut puram stuffing"] },
+      { id:"ganesh-prasadam", name:"Ganesh Chaturthi Prasadam", cat:"meals", serves:"4 pax", price:999,
+        contents:"8 pcs Kolukattai + Laddu + Sundal + Vadai + Payasam",
+        inside:["8 pcs Kolukattai (Modagam)","Laddu","Sundal","Vadai","Payasam"] }
+    ]},
+
+  { id:"onam", name:"Onam", short:"Onam", dateLabel:"Aug 27", theme:"Sadhya", hue:100, glyph:"❋",
+    cta:"Book Sadhya Slot — Morning 11AM / Afternoon 1PM",
+    strategy:"Close 3 days before · slot based", sell:"Onam Sadhya, Payasam, Banana chips",
+    event:"2027-08-27", opens:"2027-07-15", cutoff:"2027-08-24",
+    slots:["Morning 11 AM","Afternoon 1 PM"],
+    items:[
+      { id:"onam-sadhya-box", name:"Onam Sadhya Box", cat:"meals", serves:"1 pax", price:599,
+        contents:"12 items + Payasam + Banana + Plantain leaf",
+        inside:["12 Sadhya items","Payasam","Banana","Served on plantain leaf"] },
+      { id:"onam-feast-combo", name:"Onam Feast Combo", cat:"meals", serves:"4–5 pax", price:2100,
+        contents:"4 Sadhya + Extra Payasam 1L + Chips",
+        inside:["4 × Sadhya Box","Extra Payasam 1 L","Banana chips"] }
+    ]},
+
+  { id:"navaratri", name:"Navaratri / Dussehra", short:"Navaratri", dateLabel:"Oct 15–25",
+    theme:"9 Days Special", hue:255, glyph:"✧",
+    strategy:"Daily menu + Bulk", sell:"Sundal, Puliogare, Snack combos",
+    event:"2026-10-15", opens:"2026-09-01", cutoff:"2026-10-13",
+    items:[
+      { id:"sundal-combo", name:"Navaratri Sundal Combo", cat:"meals", serves:"2 pax", price:249,
+        contents:"Daily changing Sundal + Puliogare",
+        inside:["Sundal of the day (changes daily)","Puliogare"], note:"Daily menu — order per day" },
+      { id:"dussehra-catering", name:"Dussehra Pooja Catering", cat:"meals", serves:"25 pax", price:7999,
+        contents:"Pongal + Vadai + Payasam + 5 items",
+        inside:["Ven Pongal","Vadai","Payasam","5 additional items"], note:"Bulk order — 25 pax" }
+    ]},
+
+  { id:"diwali", name:"Diwali", short:"Diwali", dateLabel:"Nov 5",
+    theme:"Gift Boxes & Party Snacks", hue:42, glyph:"✦",
+    cta:"Early Bird 10% Off till Oct 20",
+    strategy:"Close 5 days before · early bird", sell:"Sweets Box, Savories, Gift Hampers, Snacks",
+    event:"2026-11-05", opens:"2026-08-15", cutoff:"2026-10-31",
+    items:[
+      { id:"diwali-sweet-box", name:"Diwali Premium Sweet Box", cat:"sweets", serves:"1 Kg", price:899,
+        contents:"Gulab Jamun, Jangiri, Mysore Pak, Then Kulal, Laddu etc.",
+        inside:["Gulab Jamun","Jangiri","Mysore Pak","Then Kulal","Laddu","…and more"] },
+      { id:"diwali-savory-box", name:"Diwali Crunchy Savory Box", cat:"savory", serves:"1 Kg", price:1100,
+        contents:"Ribbon Pakkoda, Murukku, Mixture, Thattai, Kara Boondi etc.",
+        inside:["Ribbon Pakkoda","Murukku","Mixture","Thattai","Kara Boondi","…and more"] },
+      { id:"diwali-hamper", name:"Diwali Family Hamper", cat:"hamper", serves:"2 Kg · 8–10 pax", price:2100,
+        contents:"1kg Sweets + 1kg Savories + Dry fruits + Diya",
+        inside:["Mysore Pak 250g","Laddu 250g","Mixture 500g","Ribbon Pakoda 500g","Dry fruits","Diya"] },
+      { id:"diwali-corporate-box", name:"Diwali Corporate Gift Box", cat:"corporate", serves:"1 Kg", price:1100,
+        contents:"Premium packing + Custom branding + Card",
+        inside:["Premium sweet & savory assortment","Custom branding on box","Personalised card"],
+        note:"Minimum 25 boxes for custom branding" }
+    ]},
+
+  { id:"christmas", name:"Christmas / New Year", short:"Christmas", dateLabel:"Dec 25–31",
+    hue:352, glyph:"✻", strategy:"Close 2 days before", sell:"Cake, Cookies, Party platters",
+    event:"2026-12-25", opens:"2026-11-15", cutoff:"2026-12-23",
+    planned:["Cake","Cookies","Party platters"], items:[] }
+];
+
+/* index all products */
+const PROD = {};
+FEST.forEach(f => f.items.forEach(p => { p.fid = f.id; PROD[p.id] = p; }));
+const fest = id => FEST.find(f => f.id === id);
+
+const PINCODES = ["560078","560076","560069","560041","560011","560070","560062","560068","560085"];
+const COUPONS = {
+  DIWALI15:{ pct:15, note:"Diwali Early Bird — 15% off, till Oct 15", fid:"diwali" },
+  EARLYBIRD10:{ pct:10, note:"Diwali Early Bird — 10% off, till Oct 20", fid:"diwali" }
+};
+const SLOTS = ["Morning 10–12","Afternoon 2–4","Evening 5–7"];
+const STORE = "JP Nagar Branch, Bengaluru";
+const STAGES = ["Confirmed","Preparing","Ready","Out for Delivery"];
+const SETTINGS = {
+  waNumber:"919840851067", waDisplay:"+91 98408 51067",
+  cod:true, codLimit:2000, fullOnDelivery:true
+};
+const PAYLABEL = { cod:"Cash / UPI on delivery", half:"50% advance", full:"Paid in full" };
+
+/* ============================== STATE ============================== */
+const seedOrders = [
+  { id:"DIW1245", placed:"2026-08-26", lines:[{pid:"diwali-hamper",size:0,opts:{},qty:1}],
+    date:"2026-11-04", slot:"Evening 5–7", method:"delivery", addr:"123, 5th Main, JP Nagar 6th Phase, Bengaluru 560078",
+    total:2288, paid:2288, stage:1, coupon:"DIWALI15", payMode:"full",
+    name:"Thirumurugan", phone:"9840851067", bill:{sub:2598,del:80,disc:390,pct:15} },
+  { id:"DIW0987", placed:"2025-10-28", lines:[{pid:"diwali-sweet-box",size:0,opts:{},qty:2}],
+    date:"2025-11-01", slot:"Morning 10–12", method:"pickup", addr:STORE,
+    total:1798, paid:1798, stage:4, coupon:null, payMode:"full",
+    name:"Thirumurugan", phone:"9840851067", bill:{sub:1798,del:0,disc:0,pct:0} }
+];
+
+const state = {
+  screen:"home", param:null, today:D("2026-08-30"),
+  cart:[], orders:seedOrders.map(o=>({...o})),
+  filter:"all", adminTab:"today",
+  qrUrl:(()=>{ try{ const h=location.href; return /^https?:/i.test(h) ? h.split("#")[0] : ""; }catch(e){ return ""; } })(),
+  co:{ date:null, slot:null, method:"delivery", pin:"560078", addr:"123, 5th Main, JP Nagar 6th Phase, Bengaluru 560078",
+      coupon:"", pay:"half", name:"Thirumurugan", phone:"" }
+};
+
+try{
+  const s = localStorage.getItem("sss_cart");
+  if(s) state.cart = JSON.parse(s);
+  const o = localStorage.getItem("sss_orders");
+  if(o) state.orders = JSON.parse(o);
+  const t = localStorage.getItem("sss_today");
+  if(t) state.today = D(t);
+}catch(e){}
+function save(){
+  try{
+    localStorage.setItem("sss_cart", JSON.stringify(state.cart));
+    localStorage.setItem("sss_orders", JSON.stringify(state.orders));
+    localStorage.setItem("sss_today", iso(state.today));
+  }catch(e){}
+}
+
+/* ============================== HELPERS ============================== */
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const iso = d => d.toISOString().slice(0,10);
+const MON = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+const fmt = s => { const d = typeof s==="string"?D(s):s; return MON[d.getMonth()]+" "+d.getDate()+", "+d.getFullYear(); };
+const fmtShort = s => { const d = typeof s==="string"?D(s):s; return MON[d.getMonth()]+" "+d.getDate(); };
+const days = (a,b) => Math.round((D(typeof b==="string"?b:iso(b)) - (typeof a==="string"?D(a):a))/864e5);
+
+const ICO = {
+  back:'<path d="M15 5l-7 7 7 7"/>', close:'<path d="M6 6l12 12M18 6L6 18"/>',
+  search:'<circle cx="11" cy="11" r="6.5"/><path d="M16 16l4 4"/>',
+  share:'<circle cx="17" cy="6" r="2.4"/><circle cx="6" cy="12" r="2.4"/><circle cx="17" cy="18" r="2.4"/><path d="M8.2 10.8l6.6-3.6M8.2 13.2l6.6 3.6"/>',
+  heart:'<path d="M12 20s-7-4.4-7-9a3.8 3.8 0 0 1 7-2 3.8 3.8 0 0 1 7 2c0 4.6-7 9-7 9z"/>',
+  clock:'<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>',
+  alert:'<path d="M12 8v5M12 16.5v.5"/><circle cx="12" cy="12" r="9"/>',
+  check:'<path d="M5 12.5l4.5 4.5L19 7"/>',
+  home:'<path d="M4 11l8-6.5 8 6.5V20a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1z"/><path d="M9.5 21v-6h5v6"/>',
+  grid:'<rect x="4" y="4" width="7" height="7" rx="1.6"/><rect x="13" y="4" width="7" height="7" rx="1.6"/><rect x="4" y="13" width="7" height="7" rx="1.6"/><rect x="13" y="13" width="7" height="7" rx="1.6"/>',
+  bag:'<path d="M5 8h14l-1 12H6L5 8z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/>',
+  tag:'<path d="M4 11.5V5a1 1 0 0 1 1-1h6.5L20 12.5 12.5 20z"/><circle cx="8" cy="8" r="1.3"/>',
+  user:'<circle cx="12" cy="8" r="3.4"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0"/>',
+  phone:'<path d="M5 4h4l1.5 4-2 1.5a12 12 0 0 0 6 6L16 13.5 20 15v4a1 1 0 0 1-1 1A16 16 0 0 1 4 5a1 1 0 0 1 1-1z"/>',
+  chat:'<path d="M20 12a7.5 7.5 0 0 1-11 6.6L4.5 20l1.4-4.4A7.5 7.5 0 1 1 20 12z"/>',
+  cal:'<rect x="4" y="5.5" width="16" height="15" rx="2"/><path d="M4 10h16M8.5 3.5v4M15.5 3.5v4"/>',
+  bell:'<path d="M6.5 10a5.5 5.5 0 1 1 11 0c0 4 1.5 5.5 1.5 5.5H5S6.5 14 6.5 10z"/><path d="M10 19a2 2 0 0 0 4 0"/>',
+  chart:'<path d="M4 20V9M10 20V4M16 20v-7M22 20H2"/>',
+  down:'<path d="M12 4v13M6.5 11.5L12 17l5.5-5.5M4 20h16"/>'
+};
+const svg = k => '<svg viewBox="0 0 24 24">'+ICO[k]+'</svg>';
+
+function fstatus(f){
+  const t = state.today, ev = D(f.event), op = D(f.opens), cu = D(f.cutoff);
+  if(!f.items.length) return "plan";
+  if(t > cu) return "closed";
+  if(t < op) return "soon";
+  return "open";
+}
+const STATUS_LABEL = {
+  open:"Orders open", soon:"Opens soon", closed:"Orders closed", plan:"Menu planned"
+};
+function statusLine(f){
+  const s = fstatus(f), t = state.today;
+  if(s==="open"){ const d = days(t, f.cutoff); return d<=0 ? "Closes today, 8 PM" : "Order by "+fmt(f.cutoff)+", 8 PM · "+d+" day"+(d===1?"":"s")+" left"; }
+  if(s==="soon") return "Orders open "+fmt(f.opens);
+  if(s==="closed") return "Cut-off was "+fmt(f.cutoff)+" · next cycle "+f.dateLabel;
+  return "Items shortlisted, prices not set";
+}
+function sortedFest(){
+  return [...FEST].sort((a,b)=>{
+    const ra = fstatus(a)==="open"?0:fstatus(a)==="soon"?1:fstatus(a)==="plan"?2:3;
+    const rb = fstatus(b)==="open"?0:fstatus(b)==="soon"?1:fstatus(b)==="plan"?2:3;
+    return ra-rb || (D(a.event)-D(b.event));
+  });
+}
+function artStyle(f){ return 'style="--fh:'+f.hue+'"'; }
+function unitPrice(l){
+  const p = PROD[l.pid]; if(!p) return 0;
+  let base = p.price * (p.sizes ? p.sizes[l.size||0].mult : 1);
+  if(p.options) p.options.forEach(g=>{ const c=(g.choices||[]).find(c=>c.v===(l.opts||{})[g.id]); if(c&&c.delta) base+=c.delta; });
+  return Math.round(base);
+}
+const cartCount = () => state.cart.reduce((n,l)=>n+l.qty,0);
+const cartSubtotal = () => state.cart.reduce((n,l)=>n+unitPrice(l)*l.qty,0);
+function cartFestivals(){ return [...new Set(state.cart.map(l=>PROD[l.pid].fid))]; }
+function earliestEvent(){
+  const ev = cartFestivals().map(id=>fest(id).event).sort();
+  return ev[0] || iso(state.today);
+}
+function couponInfo(){
+  const c = COUPONS[(state.co.coupon||"").toUpperCase().trim()];
+  if(!c) return null;
+  if(c.fid && !cartFestivals().includes(c.fid)) return {bad:"Valid on "+fest(c.fid).name+" items only"};
+  return c;
+}
+function bill(){
+  const sub = cartSubtotal();
+  const del = state.co.method==="delivery" && sub>0 ? 80 : 0;
+  const c = couponInfo();
+  const disc = (c && !c.bad) ? Math.round(sub*c.pct/100) : 0;
+  const total = sub + del - disc;
+  return { sub, del, disc, total, pct:(c&&!c.bad)?c.pct:0 };
+}
+
+function toast(msg){
+  const old = $(".toast"); if(old) old.remove();
+  const t = document.createElement("div");
+  t.className="toast"; t.innerHTML = '<svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2.4;stroke-linecap:round">'+ICO.check+'</svg>'+esc(msg);
+  $(".phone").appendChild(t);
+  clearTimeout(window.__tt); window.__tt = setTimeout(()=>t.remove(), 2400);
+}
+
+/* ============================== ROUTER ============================== */
+function go(route){
+  const [s, ...rest] = String(route).split(":");
+  state.screen = s; state.param = rest.join(":") || null;
+  if(s==="menu" && !state.param) state.filter="all";
+  render(); $("#scroll").scrollTop = 0;
+}
+
+/* ============================== QR ENCODER (byte mode, v1-6, EC M/L) ============================== */
+/* Minimal QR encoder — byte mode, versions 1-6, EC levels L and M. */
+function qrMatrix(text, forceMask){
+  const enc = new TextEncoder().encode(text), n = enc.length;
+  const CAP = { M:[14,26,42,62,84,106], L:[17,32,53,78,106,134] };
+  const BLK = { // version -> [ecPerBlock, [ [blocks, dataCw], ... ] ]
+    M:[[10,[[1,16]]],[16,[[1,28]]],[26,[[1,44]]],[18,[[2,32]]],[24,[[2,43]]],[16,[[4,27]]]],
+    L:[[7,[[1,19]]],[10,[[1,34]]],[15,[[1,55]]],[20,[[1,80]]],[26,[[1,108]]],[18,[[2,68]]]]
+  };
+  const ALIGN = [[],[6,18],[6,22],[6,26],[6,30],[6,34]];
+  let ec=null, ver=0;
+  for(const lvl of ["M","L"]){ for(let v=0;v<6;v++){ if(n<=CAP[lvl][v]){ ec=lvl; ver=v+1; break; } } if(ec) break; }
+  if(!ec) return null;
+  const size = 17 + ver*4;
+
+  /* ---- bit stream ---- */
+  const bits=[];
+  const put=(val,len)=>{ for(let i=len-1;i>=0;i--) bits.push((val>>i)&1); };
+  put(4,4); put(n,8);
+  enc.forEach(b=>put(b,8));
+  const [ecPer, groups] = BLK[ec][ver-1];
+  const totalData = groups.reduce((a,[b,d])=>a+b*d,0);
+  for(let i=0;i<4 && bits.length<totalData*8;i++) bits.push(0);
+  while(bits.length%8) bits.push(0);
+  const data=[]; for(let i=0;i<bits.length;i+=8){ let b=0; for(let j=0;j<8;j++) b=(b<<1)|bits[i+j]; data.push(b); }
+  const PAD=[0xEC,0x11]; let pi=0; while(data.length<totalData) data.push(PAD[pi++%2]);
+
+  /* ---- Reed-Solomon ---- */
+  const EXP=new Array(512), LOG=new Array(256);
+  for(let i=0,x=1;i<255;i++){ EXP[i]=x; LOG[x]=i; x<<=1; if(x&0x100) x^=0x11D; }
+  for(let i=255;i<512;i++) EXP[i]=EXP[i-255];
+  const mul=(a,b)=> (a===0||b===0)?0:EXP[LOG[a]+LOG[b]];
+  function rsPoly(d){ let p=[1]; for(let i=0;i<d;i++){ const q=[...p,0]; for(let j=0;j<p.length;j++) q[j+1]^=mul(p[j],EXP[i]); p=q; } return p; }
+  function rsEncode(block,d){ const gen=rsPoly(d); const res=new Array(d).fill(0);
+    for(const b of block){ const f=b^res[0]; res.shift(); res.push(0);
+      if(f!==0) for(let i=0;i<d;i++) res[i]^=mul(gen[i+1],f); }
+    return res; }
+
+  const dBlocks=[], eBlocks=[]; let off=0;
+  groups.forEach(([cnt,dcw])=>{ for(let i=0;i<cnt;i++){ const blk=data.slice(off,off+dcw); off+=dcw;
+    dBlocks.push(blk); eBlocks.push(rsEncode(blk,ecPer)); } });
+  const final=[];
+  const maxD=Math.max(...dBlocks.map(b=>b.length));
+  for(let i=0;i<maxD;i++) dBlocks.forEach(b=>{ if(i<b.length) final.push(b[i]); });
+  for(let i=0;i<ecPer;i++) eBlocks.forEach(b=>final.push(b[i]));
+
+  /* ---- matrix ---- */
+  const m=Array.from({length:size},()=>new Array(size).fill(null));
+  const set=(r,c,v)=>{ if(r>=0&&r<size&&c>=0&&c<size) m[r][c]=v; };
+  const finder=(r,c)=>{ for(let i=-1;i<=7;i++) for(let j=-1;j<=7;j++){
+    const rr=r+i, cc=c+j; if(rr<0||rr>=size||cc<0||cc>=size) continue;
+    const on = (i>=0&&i<=6&&(j===0||j===6)) || (j>=0&&j<=6&&(i===0||i===6)) || (i>=2&&i<=4&&j>=2&&j<=4);
+    set(rr,cc,on?1:0); } };
+  finder(0,0); finder(0,size-7); finder(size-7,0);
+  const ac=ALIGN[ver-1];
+  for(const r of ac) for(const c of ac){
+    if((r<=8&&c<=8)||(r<=8&&c>=size-9)||(r>=size-9&&c<=8)) continue;
+    for(let i=-2;i<=2;i++) for(let j=-2;j<=2;j++)
+      set(r+i,c+j,(Math.abs(i)===2||Math.abs(j)===2||(i===0&&j===0))?1:0); }
+  for(let i=8;i<size-8;i++){ if(m[6][i]===null) m[6][i]=i%2===0?1:0; if(m[i][6]===null) m[i][6]=i%2===0?1:0; }
+  set(size-8,8,1);
+  const reserved=(r,c)=> (r<9&&c<9)||(r<9&&c>=size-8)||(r>=size-8&&c<9);
+
+  /* ---- place data ---- */
+  const bitStr=[]; final.forEach(b=>{ for(let i=7;i>=0;i--) bitStr.push((b>>i)&1); });
+  let idx=0, up=true;
+  for(let c=size-1;c>0;c-=2){ if(c===6) c--;
+    for(let k=0;k<size;k++){ const r = up ? size-1-k : k;
+      for(const cc of [c,c-1]) if(m[r][cc]===null && !reserved(r,cc)) m[r][cc] = idx<bitStr.length?bitStr[idx++]:0; }
+    up=!up; }
+
+  /* ---- mask + format ---- */
+  const MASKS=[(r,c)=>(r+c)%2===0,(r,c)=>r%2===0,(r,c)=>c%3===0,(r,c)=>(r+c)%3===0,
+    (r,c)=>(Math.floor(r/2)+Math.floor(c/3))%2===0,(r,c)=>((r*c)%2+(r*c)%3)===0,
+    (r,c)=>(((r*c)%2+(r*c)%3)%2)===0,(r,c)=>(((r+c)%2+(r*c)%3)%2)===0];
+  function buildProper(mask){
+    const g=m.map(row=>row.slice());
+    const isFn=(r,c)=>{
+      if(reserved(r,c)) return true;
+      if(r===6||c===6) return true;
+      for(const rr of ac) for(const cc of ac){
+        if((rr<=8&&cc<=8)||(rr<=8&&cc>=size-9)||(rr>=size-9&&cc<=8)) continue;
+        if(Math.abs(r-rr)<=2 && Math.abs(c-cc)<=2) return true; }
+      return false; };
+    for(let r=0;r<size;r++) for(let c=0;c<size;c++)
+      if(!isFn(r,c) && MASKS[mask](r,c)) g[r][c]^=1;
+    const ecb = ec==="L"?1:0;
+    let fmt=(ecb<<3)|mask, d=fmt<<10;
+    for(let i=4;i>=0;i--) if(d&(1<<(i+10))) d^=0x537<<i;
+    const f=((fmt<<10)|d)^0x5412;
+    for(let i=0;i<15;i++){ const b=(f>>i)&1;
+      if(i<6) g[i][8]=b; else if(i===6) g[7][8]=b; else if(i===7) g[8][8]=b;
+      else if(i===8) g[8][7]=b; else g[8][14-i]=b;
+      if(i<8) g[8][size-1-i]=b; else g[size-15+i][8]=b; }
+    g[size-8][8]=1;
+    return g; }
+  function penalty(g){
+    let p=0;
+    for(let r=0;r<size;r++){ let run=1; for(let c=1;c<size;c++){ if(g[r][c]===g[r][c-1]) run++; else { if(run>=5)p+=3+run-5; run=1; } } if(run>=5)p+=3+run-5; }
+    for(let c=0;c<size;c++){ let run=1; for(let r=1;r<size;r++){ if(g[r][c]===g[r-1][c]) run++; else { if(run>=5)p+=3+run-5; run=1; } } if(run>=5)p+=3+run-5; }
+    for(let r=0;r<size-1;r++) for(let c=0;c<size-1;c++){ const v=g[r][c]; if(v===g[r][c+1]&&v===g[r+1][c]&&v===g[r+1][c+1]) p+=3; }
+    let dark=0; g.forEach(row=>row.forEach(v=>dark+=v));
+    p += Math.floor(Math.abs(dark*100/(size*size)-50)/5)*10;
+    return p; }
+  let best=null,bp=Infinity;
+  if(forceMask!==undefined) best=buildProper(forceMask);
+  else for(let k=0;k<8;k++){ const g=buildProper(k), s=penalty(g); if(s<bp){bp=s;best=g;} }
+  return { size, modules:best, version:ver, ec };
+}
+
+const APP_ICON = "data:image/png;base64,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";
+
+/* ============================== PWA ============================== */
+let deferredPrompt = null;
+const standalone = () => { try{ return window.matchMedia("(display-mode: standalone)").matches || navigator.standalone === true; }catch(e){ return false; } };
+(function(){ try{
+  const head = document.head;
+  const meta = (n,c) => { const e=document.createElement("meta"); e.setAttribute("name",n); e.setAttribute("content",c); head.appendChild(e); };
+  meta("theme-color","#123A2B");
+  meta("apple-mobile-web-app-capable","yes");
+  meta("apple-mobile-web-app-status-bar-style","black-translucent");
+  meta("apple-mobile-web-app-title","SSS Catering");
+  const ti=document.createElement("link"); ti.rel="apple-touch-icon"; ti.href=APP_ICON; head.appendChild(ti);
+  if(head.querySelector('link[rel="manifest"]')) return;
+  const mf={ name:"SSS Catering — Festival Orders", short_name:"SSS Catering",
+    start_url:".", scope:".", display:"standalone", orientation:"portrait",
+    background_color:"#F3F1E7", theme_color:"#123A2B",
+    icons:[{src:APP_ICON, sizes:"192x192", type:"image/png", purpose:"any maskable"}] };
+  const ml=document.createElement("link"); ml.rel="manifest";
+  ml.href=URL.createObjectURL(new Blob([JSON.stringify(mf)],{type:"application/manifest+json"}));
+  head.appendChild(ml);
+}catch(e){} })();
+window.addEventListener("beforeinstallprompt", e => { e.preventDefault(); deferredPrompt = e;
+  if(state.screen==="install") render(); });
+window.addEventListener("appinstalled", () => { deferredPrompt=null; toast("SSS Catering installed"); });
+
+function platform(){
+  const ua = navigator.userAgent || "";
+  if(/iPhone|iPad|iPod/i.test(ua)) return "ios";
+  if(/Android/i.test(ua)) return "android";
+  return "desktop";
+}
+
+/* ============================== COMPONENTS ============================== */
+function pillFor(f){
+  const s = fstatus(f);
+  return '<span class="pill dot '+s+'">'+STATUS_LABEL[s]+'</span>';
+}
+function festArt(f, cls){
+  return '<div class="art '+(cls||"")+'" '+artStyle(f)+'><div class="glyph">'+f.glyph+'</div></div>';
+}
+function prodCard(p){
+  const f = fest(p.fid), st = fstatus(f);
+  const open = st==="open";
+  return '<button class="card pcard" data-act="go" data-arg="product:'+p.id+'">'+
+    festArt(f,"sm")+
+    '<div class="body">'+
+      '<h4>'+esc(p.name)+'</h4>'+
+      '<div class="meta num">'+esc(p.serves)+' · '+esc(f.short)+'</div>'+
+      '<div class="desc">'+esc(p.contents)+'</div>'+
+      '<div class="foot"><span class="price num">'+INR(p.price)+'</span>'+
+        (open
+          ? '<span class="btn acc sm" style="margin-left:auto" data-act="add" data-arg="'+p.id+'">Add</span>'
+          : '<span class="pill '+st+'" style="margin-left:auto">'+(st==="closed"?"Closed":st==="soon"?"Opens "+fmtShort(f.opens):"Planned")+'</span>')+
+      '</div>'+
+    '</div></button>';
+}
+
+/* ============================== SCREEN: HOME ============================== */
+function scHome(){
+  const dw = fest("diwali"), st = fstatus(dw);
+  const upcoming = sortedFest().slice(0,6);
+  const past = state.orders.filter(o=>o.stage>=4)[0] || state.orders[state.orders.length-1];
+  const menuLinks = [
+    ["Upcoming Festivals","menu"],["Diwali Specials","menu:fest:diwali"],["Ramzan Specials","menu:fest:ramzan"],
+    ["Sweets Boxes","menu:cat:sweets"],["Savory Boxes","menu:cat:savory"],["Biryani & Meals","menu:cat:meals"],
+    ["Corporate Gifting","menu:cat:corporate"],["Daily Tiffin","tiffin"]
+  ];
+  return ''+
+  '<div class="banner art" '+artStyle(dw)+'>'+
+    '<div class="kicker">'+(st==="open"?"Early bird live":"Featured festival")+'</div>'+
+    '<h2>Diwali Early Bird — 15% Off till Oct 15</h2>'+
+    '<button class="btn acc" data-act="go" data-arg="menu:fest:diwali">Order Now</button>'+
+  '</div>'+
+
+  '<div class="sechead"><h3>Upcoming Festivals</h3><a data-act="go" data-arg="menu">See all</a></div>'+
+  '<div class="hscroll">'+ upcoming.map(f=>{
+    const s = fstatus(f);
+    const cta = s==="open" ? "Order Now" : s==="soon" ? "Notify Me" : s==="plan" ? "Notify Me" : "Notify Me";
+    const act = s==="open" ? 'data-act="go" data-arg="menu:fest:'+f.id+'"' : 'data-act="notify" data-arg="'+f.id+'"';
+    return '<div class="fbig">'+festArt(f)+
+      '<div class="b"><h4>'+esc(f.short)+'</h4>'+
+      '<div class="tiny">'+esc(f.dateLabel)+(f.theme?' · '+esc(f.theme):'')+'</div>'+
+      pillFor(f)+
+      '<div class="tiny" style="line-height:1.35">'+esc(statusLine(f))+'</div>'+
+      '<button class="btn '+(s==="open"?"acc":"out")+' sm" style="width:100%;margin-top:auto" '+act+'>'+cta+'</button>'+
+      '</div></div>';
+  }).join("") + '</div>'+
+
+  '<div class="sechead"><h3>Shop by</h3></div>'+
+  '<div class="pad" style="padding-top:0"><div style="display:grid;grid-template-columns:1fr 1fr;gap:9px">'+
+    menuLinks.map(([label,route])=>'<button class="card" style="padding:12px;text-align:left;font-weight:600;font-size:13.5px;line-height:1.25" data-act="'+(route==="tiffin"?"tiffin":"go")+'" data-arg="'+route+'">'+esc(label)+'</button>').join("")+
+  '</div></div>'+
+
+  (past ? '<div class="sechead"><h3>Quick Reorder</h3></div>'+
+  '<div class="pad" style="padding-top:0"><div class="card pad row">'+
+    festArt(fest(PROD[past.lines[0].pid].fid),"sm")+
+    '<div style="flex:1;min-width:0"><div style="font-weight:700;font-size:14px">'+esc(PROD[past.lines[0].pid].name)+'</div>'+
+    '<div class="tiny">Ordered '+fmt(past.date)+' · '+INR(past.total)+'</div></div>'+
+    '<button class="btn out sm" data-act="reorder" data-arg="'+past.id+'">Reorder</button>'+
+  '</div></div>' : '')+
+
+  (standalone() ? '' :
+  '<div class="pad" style="padding-bottom:0"><button class="card pad row" style="width:100%;text-align:left;gap:12px" data-act="go" data-arg="install">'+
+    '<img src="'+APP_ICON+'" alt="" style="width:44px;height:44px;border-radius:11px;flex:none">'+
+    '<span style="flex:1;min-width:0"><b style="font-size:14px;display:block">Add SSS Catering to your phone</b>'+
+    '<span class="tiny">Installs from this page — no Play Store, no App Store</span></span>'+
+    '<span class="btn acc sm">Install</span></button></div>')+
+
+  '<div class="sechead"><h3>Festival Calendar</h3></div>'+
+  '<div class="pad" style="padding-top:0"><div class="card" style="padding:4px 14px">'+
+    FEST.map((f,i)=>'<button style="display:flex;gap:10px;align-items:center;width:100%;text-align:left;padding:11px 0;'+(i?'border-top:1px solid var(--line-soft)':'')+'" data-act="go" data-arg="menu:fest:'+f.id+'">'+
+      '<span style="width:9px;height:9px;border-radius:3px;background:hsl('+f.hue+' 62% 45%);flex:none"></span>'+
+      '<span style="flex:1;min-width:0"><b style="font-size:13.5px;display:block">'+esc(f.name)+'</b>'+
+      '<span class="tiny">'+esc(f.dateLabel)+' · '+esc(f.strategy)+'</span></span>'+
+      pillFor(f)+'</button>').join("")+
+  '</div></div>'+
+  '<div style="height:16px"></div>';
+}
+
+/* ============================== SCREEN: MENU ============================== */
+function scMenu(){
+  const p = state.param || "";
+  if(p.startsWith("fest:")) return menuFest(fest(p.slice(5)));
+  if(p.startsWith("cat:"))  return menuCat(p.slice(4));
+  return menuIndex();
+}
+function head(title, back){
+  return '<div class="phead">'+
+    '<button class="ghost" data-act="go" data-arg="'+(back||"home")+'" aria-label="Back">'+svg("back")+'</button>'+
+    '<h2>'+esc(title)+'</h2>'+
+    '<button class="ghost" data-act="go" data-arg="menu" aria-label="Search menu">'+svg("search")+'</button>'+
+  '</div>';
+}
+function menuIndex(){
+  return head("Menu","home")+
+  '<div class="sechead" style="padding-top:14px"><h3>By category</h3></div>'+
+  '<div class="pad" style="padding-top:0;display:grid;grid-template-columns:1fr 1fr;gap:9px">'+
+    Object.entries(CATS).map(([k,v])=>{
+      const n = Object.values(PROD).filter(p=>p.cat===k).length;
+      return '<button class="card" style="padding:13px;text-align:left" data-act="go" data-arg="menu:cat:'+k+'">'+
+        '<div style="font-weight:700;font-size:13.5px">'+esc(v)+'</div><div class="tiny num">'+n+' item'+(n===1?"":"s")+'</div></button>';
+    }).join("")+
+  '</div>'+
+  '<div class="sechead"><h3>By festival</h3></div>'+
+  '<div class="pad" style="padding-top:0">'+
+    sortedFest().map(f=>'<button class="card fcard" style="margin-bottom:10px;width:100%" data-act="go" data-arg="menu:fest:'+f.id+'">'+
+      festArt(f,"sm")+
+      '<div class="body"><h4>'+esc(f.name)+'</h4>'+
+      '<div class="tiny" style="margin:2px 0 5px">'+esc(f.dateLabel)+' · '+(f.items.length?f.items.length+" combos":"menu planned")+'</div>'+
+      pillFor(f)+'</div></button>').join("")+
+  '</div>';
+}
+function menuFest(f){
+  if(!f) return menuIndex();
+  const st = fstatus(f);
+  const cats = [...new Set(f.items.map(i=>i.cat))];
+  const shown = state.filter==="all" ? f.items : f.items.filter(i=>i.cat===state.filter);
+  return head(f.short+" Specials","menu")+
+    (cats.length>1 ? '<div class="tabs">'+
+      ['all',...cats].map(c=>'<button class="tab" aria-selected="'+(state.filter===c)+'" data-act="filter" data-arg="'+c+'">'+(c==="all"?"All":CATS[c])+'</button>').join("")+
+    '</div>' : '')+
+    '<div class="pad stack">'+
+      '<div class="card" style="overflow:hidden">'+
+        '<div class="art" style="--fh:'+f.hue+';height:100px"><div class="glyph">'+f.glyph+'</div></div>'+
+        '<div class="pad stack" style="gap:8px">'+
+          '<div class="row"><div style="flex:1"><div class="eyebrow">'+esc(f.dateLabel)+'</div>'+
+          '<h3 style="font-size:18px">'+esc(f.name)+'</h3></div>'+pillFor(f)+'</div>'+
+          (f.theme?'<div class="muted">Theme: '+esc(f.theme)+'</div>':'')+
+          '<div class="notice '+(st==="open"?"good":st==="closed"?"bad":"warn")+'">'+
+            '<svg viewBox="0 0 24 24">'+ICO.clock+'</svg><div>'+esc(statusLine(f))+
+            '<br><b>Cut-off rule:</b> '+esc(f.strategy)+'</div></div>'+
+          (f.cta?'<div class="row" style="gap:7px"><span style="font-size:20px;line-height:1;color:var(--accent)">❯</span><b style="font-size:13.5px">'+esc(f.cta)+'</b></div>':'')+
+        '</div>'+
+      '</div>'+
+      (f.items.length ? shown.map(prodCard).join("")
+        : '<div class="card pad stack">'+
+            '<div class="eyebrow">Planned menu — from your sheet</div>'+
+            '<ul class="inside">'+f.planned.map(x=>'<li>'+esc(x)+'</li>').join("")+'</ul>'+
+            '<div class="tiny">Prices and combo names not set yet. Add them to the menu sheet and they appear here.</div>'+
+            '<button class="btn out" data-act="notify" data-arg="'+f.id+'">Notify me when this opens</button>'+
+          '</div>')+
+    '</div>'+
+    (cartCount() ? '<div class="sticky"><div style="flex:1"><div class="tiny">View Cart ('+cartCount()+')</div><b class="num" style="font-size:16px">'+INR(cartSubtotal())+'</b></div><button class="btn acc" style="width:auto;padding:11px 22px" data-act="go" data-arg="cart">Go to Cart</button></div>' : '');
+}
+function menuCat(cat){
+  const items = Object.values(PROD).filter(p=>p.cat===cat);
+  return head(CATS[cat]||"Menu","menu")+
+    '<div class="pad stack">'+
+      '<div class="tiny">'+items.length+' item'+(items.length===1?"":"s")+' across '+[...new Set(items.map(i=>i.fid))].length+' festivals</div>'+
+      items.map(prodCard).join("")+
+    '</div>';
+}
+
+/* ============================== SCREEN: PRODUCT ============================== */
+function scProduct(){
+  const p = PROD[state.param]; if(!p) return scMenu();
+  const f = fest(p.fid), st = fstatus(f), open = st==="open";
+  const d = state.draft && state.draft.pid===p.id ? state.draft
+          : (state.draft = { pid:p.id, size:0, opts:Object.fromEntries((p.options||[]).map(g=>[g.id,g.choices[0].v])), qty:1 });
+  const unit = unitPrice(d);
+  return ''+
+  '<div class="hero art" '+artStyle(f)+'>'+
+    '<div class="glyph" style="font-size:76px">'+f.glyph+'</div>'+
+    '<button class="ghost back" data-act="back">'+svg("back")+'</button>'+
+    '<div class="actions"><button class="ghost" data-act="share">'+svg("share")+'</button>'+
+    '<button class="ghost" data-act="wish">'+svg("heart")+'</button></div>'+
+  '</div>'+
+  '<div class="pad stack">'+
+    '<div>'+
+      '<div class="eyebrow">'+esc(f.name)+(f.theme?' · '+esc(f.theme):'')+'</div>'+
+      '<h2 style="font-size:21px;margin:6px 0 6px">'+esc(p.name)+'</h2>'+
+      '<div class="row" style="gap:12px">'+
+        '<b class="num" style="font-family:Fraunces,Georgia,serif;font-size:24px">'+INR(unit)+'</b>'+
+        '<span class="tiny">Serves '+esc(p.sizes?p.sizes[d.size].label:p.serves)+'</span>'+
+      '</div>'+
+      '<div class="tiny" style="margin-top:5px">★ 4.8 · 124 reviews</div>'+
+    '</div>'+
+    '<div class="divider"></div>'+
+    '<div><div class="eyebrow" style="margin-bottom:7px">Description</div>'+
+      '<p class="muted">'+esc(p.contents)+'</p></div>'+
+    '<div><div class="eyebrow" style="margin-bottom:9px">What&rsquo;s inside</div>'+
+      '<ul class="inside">'+p.inside.map(x=>'<li>'+esc(x)+'</li>').join("")+'</ul></div>'+
+
+    (p.sizes ? '<div><div class="eyebrow" style="margin-bottom:8px">Serves</div><div class="optgrp">'+
+      p.sizes.map((s,i)=>'<button class="opt" aria-pressed="'+(d.size===i)+'" data-act="size" data-arg="'+i+'">'+esc(s.label)+' · '+INR(Math.round(p.price*s.mult))+'</button>').join("")+
+      '</div></div>' : '')+
+
+    (p.options||[]).map(g=>'<div><div class="eyebrow" style="margin-bottom:8px">'+esc(g.label)+'</div><div class="optgrp">'+
+      g.choices.map(c=>'<button class="opt" aria-pressed="'+(d.opts[g.id]===c.v)+'" data-act="opt" data-arg="'+g.id+'|'+esc(c.v)+'">'+esc(c.v)+(c.delta?' +'+INR(c.delta):'')+'</button>').join("")+
+      '</div></div>').join("")+
+
+    '<div><div class="eyebrow" style="margin-bottom:8px">Delivery type</div>'+
+      '<div class="stack" style="gap:8px">'+
+        '<button class="radio" aria-checked="'+(state.co.method==="delivery")+'" data-act="method" data-arg="delivery"><span class="dot"></span><span class="t"><b>Home Delivery</b><i>₹80 · Bengaluru serviceable pincodes</i></span></button>'+
+        '<button class="radio" aria-checked="'+(state.co.method==="pickup")+'" data-act="method" data-arg="pickup"><span class="dot"></span><span class="t"><b>Store Pickup — Free</b><i>'+esc(STORE)+'</i></span></button>'+
+      '</div>'+
+      (state.co.method==="delivery" ? '<div style="margin-top:9px"><input class="inp" id="pinInp" placeholder="Enter pincode" inputmode="numeric" maxlength="6" value="'+esc(state.co.pin)+'">'+
+        '<div class="tiny" style="margin-top:6px;color:'+(PINCODES.includes(state.co.pin)?"var(--ok)":"var(--alert)")+'">'+
+        (state.co.pin.length<6 ? "Enter your 6-digit pincode" : PINCODES.includes(state.co.pin) ? "✓ We deliver to "+esc(state.co.pin) : "✕ Not serviceable yet — pickup available")+'</div></div>' : '')+
+    '</div>'+
+
+    (p.note ? '<div class="notice warn"><svg viewBox="0 0 24 24">'+ICO.alert+'</svg><div>'+esc(p.note)+'</div></div>' : '')+
+
+    '<div class="notice '+(open?"warn":"bad")+'"><svg viewBox="0 0 24 24">'+ICO.clock+'</svg><div>'+
+      (open
+        ? '<b>Cut-off:</b> '+fmt(f.cutoff)+', 8 PM<br><b>Delivery:</b> '+fmt(f.event)+' onwards'
+        : st==="soon" ? '<b>Orders open '+fmt(f.opens)+'</b><br>Cut-off '+fmt(f.cutoff)+', 8 PM'
+        : '<b>Sold Out — orders closed</b><br>Cut-off was '+fmt(f.cutoff)+'. Next cycle: '+esc(f.dateLabel))+
+    '</div></div>'+
+    '<div style="height:4px"></div>'+
+  '</div>'+
+  '<div class="sticky">'+
+    '<div class="stepper"><button data-act="pqty" data-arg="-1">−</button><span class="num">'+d.qty+'</span><button data-act="pqty" data-arg="1">+</button></div>'+
+    (open
+      ? '<button class="btn acc" data-act="addcart">Add to Cart — '+INR(unit*d.qty)+'</button>'
+      : '<button class="btn" disabled>'+(st==="closed"?"Sold Out":"Not open yet")+'</button>')+
+  '</div>';
+}
+
+/* ============================== SCREEN: CART + CHECKOUT ============================== */
+function scCart(){
+  if(!state.cart.length) return head("Your Cart","home")+
+    '<div class="pad stack" style="align-items:center;text-align:center;padding-top:56px">'+
+      '<div style="font-size:44px;opacity:.35">🧺</div>'+
+      '<h3>Your cart is empty</h3><p class="muted">Pick a festival box to get started.</p>'+
+      '<button class="btn acc" style="width:auto;padding:11px 22px" data-act="go" data-arg="menu">Browse Menu</button></div>';
+
+  const b = bill(), c = couponInfo();
+  const evt = earliestEvent();
+  if(!state.co.date) state.co.date = evt;
+  const fsts = cartFestivals().map(fest);
+  const slots = (fsts[0] && fsts[0].slots) ? fsts[0].slots : SLOTS;
+  if(!state.co.slot) state.co.slot = slots[0];
+  const pinOK = state.co.method==="pickup" || PINCODES.includes(state.co.pin);
+  const cutoffs = fsts.map(f=>({f, closed: state.today > D(f.cutoff)}));
+  const blocked = cutoffs.filter(x=>x.closed);
+  const codOK  = SETTINGS.cod && b.total <= SETTINGS.codLimit;
+  const halfOK = !(SETTINGS.fullOnDelivery && state.co.method==="delivery");
+  if(state.co.pay==="cod"  && !codOK)  state.co.pay = halfOK ? "half" : "full";
+  if(state.co.pay==="half" && !halfOK) state.co.pay = "full";
+  const payNow = state.co.pay==="cod" ? 0 : state.co.pay==="half" ? Math.round(b.total/2) : b.total;
+  const phoneOK = state.co.phone.replace(/\D/g,"").length === 10;
+
+  return head("Your Cart","menu")+
+  '<div class="pad stack">'+
+    '<div class="tiny num">'+cartCount()+' item'+(cartCount()===1?"":"s")+' · '+INR(b.sub)+'</div>'+
+    state.cart.map((l,i)=>{
+      const p = PROD[l.pid], f = fest(p.fid);
+      const optTxt = Object.values(l.opts||{}).filter(Boolean).join(" · ");
+      return '<div class="card pcard" style="cursor:default">'+festArt(f,"sm")+
+        '<div class="body"><h4>'+esc(p.name)+'</h4>'+
+        '<div class="meta">'+esc(p.sizes?p.sizes[l.size].label:p.serves)+(optTxt?" · "+esc(optTxt):"")+'</div>'+
+        '<div class="foot"><span class="price num">'+INR(unitPrice(l)*l.qty)+'</span>'+
+        '<div class="stepper" style="margin-left:auto"><button data-act="qty" data-arg="'+i+'|-1">−</button><span class="num">'+l.qty+'</span><button data-act="qty" data-arg="'+i+'|1">+</button></div>'+
+        '<button class="ghost" data-act="rm" data-arg="'+i+'" aria-label="Remove">'+svg("close")+'</button>'+
+        '</div></div></div>';
+    }).join("")+
+
+    (blocked.length ? '<div class="notice bad"><svg viewBox="0 0 24 24">'+ICO.alert+'</svg><div><b>Cut-off passed</b><br>'+
+      blocked.map(x=>esc(x.f.name)+" closed "+fmt(x.f.cutoff)).join("<br>")+'. Remove these to check out.</div></div>' : '')+
+
+    '<div class="card pad stack">'+
+      '<div class="eyebrow">Your details</div>'+
+      '<div><label class="f" for="nameInp">Name</label><input class="inp" id="nameInp" value="'+esc(state.co.name)+'" placeholder="Full name"></div>'+
+      '<div><label class="f" for="phoneInp">WhatsApp number</label>'+
+        '<input class="inp" id="phoneInp" inputmode="numeric" maxlength="10" value="'+esc(state.co.phone)+'" placeholder="10-digit mobile number">'+
+        '<div class="tiny" style="margin-top:6px;color:'+(phoneOK?"var(--ok)":"var(--ink-3)")+'">'+(phoneOK?"✓ Confirmation and updates come here":"We send order updates on WhatsApp")+'</div></div>'+
+    '</div>'+
+    '<div class="card pad stack">'+
+      '<div class="eyebrow">Order for</div>'+
+      '<div><label class="f" for="coDate">Delivery / pickup date</label>'+
+        '<input class="inp" type="date" id="coDate" value="'+esc(state.co.date)+'" min="'+iso(state.today)+'"></div>'+
+      '<div><label class="f">Time slot</label><div class="optgrp">'+
+        slots.map(s=>'<button class="opt" aria-pressed="'+(state.co.slot===s)+'" data-act="slot" data-arg="'+esc(s)+'">'+esc(s)+'</button>').join("")+
+      '</div></div>'+
+    '</div>'+
+
+    '<div class="card pad stack">'+
+      '<div class="eyebrow">Delivery method</div>'+
+      '<button class="radio" aria-checked="'+(state.co.method==="delivery")+'" data-act="method" data-arg="delivery"><span class="dot"></span><span class="t"><b>Home Delivery — ₹80</b><i>Saved address 1</i></span></button>'+
+      (state.co.method==="delivery" ? '<textarea class="inp" id="addrInp" rows="2" placeholder="Delivery address">'+esc(state.co.addr)+'</textarea>'+
+        '<input class="inp" id="pinInp" placeholder="Pincode" inputmode="numeric" maxlength="6" value="'+esc(state.co.pin)+'">'+
+        '<div class="tiny" style="color:'+(pinOK?"var(--ok)":"var(--alert)")+'">'+(pinOK?"✓ Serviceable pincode":"✕ "+esc(state.co.pin)+" is not serviceable — switch to pickup")+'</div>' : '')+
+      '<button class="radio" aria-checked="'+(state.co.method==="pickup")+'" data-act="method" data-arg="pickup"><span class="dot"></span><span class="t"><b>Store Pickup — Free</b><i>'+esc(STORE)+'</i></span></button>'+
+    '</div>'+
+
+    '<div class="card pad stack">'+
+      '<div class="eyebrow">Apply coupon</div>'+
+      '<div class="row"><input class="inp" id="cpnInp" placeholder="e.g. DIWALI15" value="'+esc(state.co.coupon)+'" style="text-transform:uppercase">'+
+      '<button class="btn out sm" data-act="applycpn">Apply</button></div>'+
+      (c && c.bad ? '<div class="tiny" style="color:var(--alert)">'+esc(c.bad)+'</div>'
+        : c ? '<div class="tiny" style="color:var(--ok)">✓ '+esc(c.note)+'</div>'
+        : '<div class="tiny">Live codes: DIWALI15, EARLYBIRD10</div>')+
+    '</div>'+
+
+    '<div class="card pad bill">'+
+      '<div class="eyebrow" style="margin-bottom:2px">Bill details</div>'+
+      '<div class="l"><span>Subtotal</span><span class="num">'+INR(b.sub)+'</span></div>'+
+      '<div class="l"><span>Delivery</span><span class="num">'+(b.del?INR(b.del):"Free")+'</span></div>'+
+      (b.disc?'<div class="l disc"><span>Discount ('+b.pct+'%)</span><span class="num">−'+INR(b.disc)+'</span></div>':'')+
+      '<div class="l total"><span>Total</span><span class="num">'+INR(b.total)+'</span></div>'+
+    '</div>'+
+
+    '<div class="card pad stack">'+
+      '<div class="eyebrow">Payment</div>'+
+      '<button class="radio" aria-checked="'+(state.co.pay==="cod")+'" data-act="pay" data-arg="cod" '+(codOK?"":'disabled style="opacity:.5"')+'><span class="dot"></span><span class="t"><b>Cash / UPI on '+(state.co.method==="delivery"?"delivery":"pickup")+' — pay ₹0 now</b><i>'+(codOK?"Pay the full "+INR(b.total)+" when you collect":"Not available above "+INR(SETTINGS.codLimit))+'</i></span></button>'+
+      '<button class="radio" aria-checked="'+(state.co.pay==="half")+'" data-act="pay" data-arg="half" '+(halfOK?"":'disabled style="opacity:.5"')+'><span class="dot"></span><span class="t"><b>Pay 50% advance — '+INR(Math.round(b.total/2))+'</b><i>'+(halfOK?"Balance of "+INR(b.total-Math.round(b.total/2))+" on "+(state.co.method==="delivery"?"delivery":"pickup"):"Home delivery needs full advance")+'</i></span></button>'+
+      '<button class="radio" aria-checked="'+(state.co.pay==="full")+'" data-act="pay" data-arg="full"><span class="dot"></span><span class="t"><b>Pay full now — '+INR(b.total)+'</b><i>Razorpay / PhonePe · UPI, cards, netbanking</i></span></button>'+
+      '<div class="tiny">Order summary goes to the kitchen on WhatsApp '+esc(SETTINGS.waDisplay)+' the moment you confirm.</div>'+
+    '</div>'+
+    '<div style="height:6px"></div>'+
+  '</div>'+
+  '<div class="sticky">'+
+    '<div style="flex:1"><div class="tiny">'+(payNow?"Pay now":"Pay on "+(state.co.method==="delivery"?"delivery":"pickup"))+'</div>'+
+    '<b class="num" style="font-size:17px;font-family:Fraunces,Georgia,serif">'+INR(payNow||b.total)+'</b></div>'+
+    (blocked.length || !pinOK || !phoneOK
+      ? '<button class="btn" disabled style="width:auto;padding:12px 20px">'+(blocked.length?"Cut-off passed":!pinOK?"Pincode not serviceable":"Add your number")+'</button>'
+      : '<button class="btn acc" style="width:auto;padding:12px 22px" data-act="place">'+(payNow?"Proceed to Pay":"Place Order")+'</button>')+
+  '</div>';
+}
+
+/* ============================== SCREEN: ORDERS + TRACKING ============================== */
+function scOrders(){
+  return head("My Orders","home")+
+  '<div class="pad stack">'+
+    (state.orders.length ? state.orders.slice().reverse().map(o=>{
+      const p = PROD[o.lines[0].pid], f = fest(p.fid);
+      const n = o.lines.reduce((a,l)=>a+l.qty,0);
+      return '<button class="card pcard" data-act="go" data-arg="order:'+o.id+'">'+festArt(f,"sm")+
+      '<div class="body"><div class="row"><h4 style="flex:1">#'+esc(o.id)+'</h4>'+
+      '<span class="pill '+(o.stage>=4?"open":o.stage>=1?"soon":"plan")+'">'+esc(STAGES[Math.min(o.stage,3)])+(o.stage>=4?" · Delivered":"")+'</span></div>'+
+      '<div class="meta">'+esc(p.name)+(n>1?" +"+(n-1)+" more":"")+'</div>'+
+      '<div class="tiny">'+fmt(o.date)+' · '+esc(o.slot)+' · '+(o.method==="delivery"?"Home delivery":"Pickup")+'</div>'+
+      '<div class="foot"><span class="price num">'+INR(o.total)+'</span>'+
+      '<span class="btn out sm" style="margin-left:auto" data-act="reorder" data-arg="'+o.id+'">Reorder</span></div>'+
+      '</div></button>';
+    }).join("") : '<p class="muted">No orders yet.</p>')+
+  '</div>';
+}
+function scOrder(){
+  const o = state.orders.find(x=>x.id===state.param); if(!o) return scOrders();
+  const p0 = PROD[o.lines[0].pid], f = fest(p0.fid);
+  const stage = Math.min(o.stage,3), delivered = o.stage>=4;
+  const feedItems = [
+    [0,"Order confirmed. 50% advance received."],
+    [1,"Chef started preparing your order"],
+    [2,"Your order is packed and ready"],
+    [3, o.method==="delivery" ? "Out for delivery — rider assigned" : "Ready for pickup at "+STORE]
+  ].filter(x=>x[0]<=o.stage);
+  return head("Order #"+o.id,"orders")+
+  '<div class="pad stack">'+
+    '<div class="card pad stack">'+
+      '<div class="row"><div style="flex:1"><div class="eyebrow">Status</div>'+
+      '<h3 style="font-size:18px">'+(delivered?"Delivered":esc(STAGES[stage]))+'</h3></div>'+
+      festArt(f,"sm")+'</div>'+
+      '<div class="track">'+STAGES.map((s,i)=>'<div class="s '+(o.stage>i?"done":o.stage===i?"now":"")+'"><div class="n">'+(o.stage>i?"✓":i+1)+'</div>'+esc(s)+'</div>').join("")+'</div>'+
+    '</div>'+
+
+    '<div class="card pad stack">'+
+      '<div class="eyebrow">Order details</div>'+
+      o.lines.map(l=>'<div class="row"><span style="flex:1;font-size:13.5px">'+esc(PROD[l.pid].name)+' × '+l.qty+'</span><b class="num">'+INR(unitPrice(l)*l.qty)+'</b></div>').join("")+
+      '<div class="divider"></div>'+
+      '<div class="row"><span class="tiny" style="flex:1">'+(o.method==="delivery"?"Delivery":"Pickup")+'</span><span style="font-size:13px">'+fmt(o.date)+' · '+esc(o.slot)+'</span></div>'+
+      '<div class="tiny">'+esc(o.addr)+'</div>'+
+      '<div class="divider"></div>'+
+      '<div class="row"><span style="flex:1;font-weight:700">Order total</span><b class="num" style="font-family:Fraunces,Georgia,serif;font-size:17px">'+INR(o.total)+'</b></div>'+
+      '<div class="row"><span class="tiny" style="flex:1">'+esc(PAYLABEL[o.payMode||"full"])+'</span><span class="tiny num">Paid '+INR(o.paid)+'</span></div>'+
+      (o.paid<o.total?'<div class="notice warn" style="margin-top:2px"><svg viewBox="0 0 24 24">'+ICO.alert+'</svg><div><b>'+INR(o.total-o.paid)+'</b> to be collected on '+(o.method==="delivery"?"delivery":"pickup")+'</div></div>':'')+
+    '</div>'+
+
+    '<div class="card pad stack">'+
+      '<div class="eyebrow">Live update</div>'+
+      '<ul class="feed">'+feedItems.reverse().map(x=>'<li><span class="tm">Step '+(x[0]+1)+'</span><span>'+esc(x[1])+'</span></li>').join("")+'</ul>'+
+    '</div>'+
+
+    '<div class="card pad stack" style="border-color:var(--ok)">'+
+      '<div class="row"><div style="flex:1"><div class="eyebrow" style="color:var(--ok)">Order summary → kitchen</div>'+
+      '<div class="tiny">Sent to '+esc(SETTINGS.waDisplay)+'</div></div>'+svg("chat")+'</div>'+
+      '<a class="btn" style="background:#25D366;color:#08240F;text-decoration:none" href="'+waLink(waMessage(o))+'" target="_blank" rel="noopener">'+svg("chat")+' Send on WhatsApp</a>'+
+      '<textarea class="inp" id="waTxt" rows="7" readonly style="font-size:11.5px;line-height:1.5" onclick="this.select()">'+esc(waMessage(o))+'</textarea>'+
+      '<button class="btn out sm" style="width:100%" data-act="copywa">Copy message</button>'+
+      '<div class="tiny">If the button does not open WhatsApp, copy this and paste it to '+esc(SETTINGS.waDisplay)+'.</div>'+
+    '</div>'+
+    '<div class="row" style="gap:10px">'+
+      '<a class="btn out" style="text-decoration:none" href="tel:+91'+SETTINGS.waNumber.slice(2)+'">'+svg("phone")+' Call Us</a>'+
+      '<a class="btn out" style="text-decoration:none" href="https://wa.me/'+SETTINGS.waNumber+'" target="_blank" rel="noopener">'+svg("chat")+' WhatsApp</a>'+
+    '</div>'+
+    '<div class="tiny">Status is updated by the kitchen from the admin panel — each change pushes a WhatsApp message.</div>'+
+  '</div>';
+}
+
+/* ============================== SCREEN: OFFERS ============================== */
+function scOffers(){
+  return head("Offers","home")+
+  '<div class="pad stack">'+
+    Object.entries(COUPONS).map(([code,c])=>'<div class="card pad stack" style="gap:8px">'+
+      '<div class="row"><b style="font-family:var(--mono);font-size:16px;letter-spacing:.06em;flex:1">'+code+'</b>'+
+      '<span class="pill open">'+c.pct+'% OFF</span></div>'+
+      '<div class="muted">'+esc(c.note)+'</div>'+
+      '<button class="btn out sm" style="width:100%" data-act="usecpn" data-arg="'+code+'">Apply to cart</button>'+
+    '</div>').join("")+
+    '<div class="sechead" style="padding:8px 0 2px"><h3>Festival offers</h3></div>'+
+    FEST.filter(f=>f.cta).map(f=>'<button class="card pcard" data-act="go" data-arg="menu:fest:'+f.id+'">'+festArt(f,"sm")+
+      '<div class="body"><h4>'+esc(f.short)+'</h4><div class="desc">'+esc(f.cta)+'</div>'+
+      '<div class="foot">'+pillFor(f)+'</div></div></button>').join("")+
+  '</div>';
+}
+
+/* ============================== SCREEN: ACCOUNT ============================== */
+function scAccount(){
+  return head("Account","home")+
+  '<div class="pad stack">'+
+    '<div class="card pad row">'+
+      '<div style="width:46px;height:46px;border-radius:50%;background:var(--brand);color:var(--on-brand);display:grid;place-items:center;font-family:Fraunces,Georgia,serif;font-size:19px;font-weight:700">T</div>'+
+      '<div style="flex:1"><b style="font-size:15px">Thirumurugan</b><div class="tiny">+91 98••• ••••2 · mdthiru@gmail.com</div></div>'+
+    '</div>'+
+    '<div class="card pad stack"><div class="eyebrow">Saved address</div>'+
+      '<div class="muted">'+esc(state.co.addr)+'</div>'+
+      '<div class="tiny">Pickup store: '+esc(STORE)+'</div></div>'+
+
+    '<div class="card pad stack"><div class="eyebrow">Demo date</div>'+
+      '<p class="tiny">Cut-off and slot logic runs off this date. Move it to see any festival open, close, or go on sale.</p>'+
+      '<input class="inp" type="date" id="simDate" value="'+iso(state.today)+'">'+
+      '<div class="optgrp">'+
+        [["2026-08-30","Today"],["2026-10-18","Diwali rush"],["2026-11-02","After cut-off"],["2027-08-20","Onam window"]]
+        .map(([d,l])=>'<button class="opt" aria-pressed="'+(iso(state.today)===d)+'" data-act="setdate" data-arg="'+d+'">'+l+'</button>').join("")+
+      '</div>'+
+    '</div>'+
+
+    '<button class="card pad row" style="width:100%;text-align:left" data-act="go" data-arg="orders">'+
+      '<span style="flex:1;font-weight:600">My Orders</span><span class="tiny num">'+state.orders.length+'</span></button>'+
+    '<button class="card pad row" style="width:100%;text-align:left" data-act="go" data-arg="install">'+
+      '<img src="'+APP_ICON+'" alt="" style="width:26px;height:26px;border-radius:7px">'+
+      '<span style="flex:1;font-weight:600">Get the app on your phone</span><span class="pill open">Free</span></button>'+
+    '<button class="card pad row" style="width:100%;text-align:left" data-act="go" data-arg="admin">'+
+      '<span style="flex:1;font-weight:600">Admin Dashboard</span><span class="pill plan">Staff</span></button>'+
+    '<button class="card pad row" style="width:100%;text-align:left" data-act="reset">'+
+      '<span style="flex:1;font-weight:600;color:var(--alert)">Reset demo data</span></button>'+
+    '<div class="tiny">Prototype built from SSS Catering.xlsx — 11 festivals, 18 priced combos, 6 screens.</div>'+
+  '</div>';
+}
+
+/* ============================== SCREEN: INSTALL ============================== */
+function scInstall(){
+  const pf = platform(), inst = standalone();
+  const STEPS = {
+    ios:["Open this page in Safari (not Chrome — only Safari can install on iPhone)",
+         "Tap the Share button at the bottom of the screen",
+         "Scroll down and tap <b>Add to Home Screen</b>",
+         "Tap Add — SSS Catering now sits on your home screen like any app"],
+    android:["Open this page in Chrome",
+             "Tap the ⋮ menu at the top right",
+             "Tap <b>Install app</b> or <b>Add to Home screen</b>",
+             "Confirm — it opens full screen, with no browser bar"],
+    desktop:["Open this page in Chrome or Edge",
+             "Click the install icon at the right of the address bar",
+             "Click <b>Install</b> — it opens in its own window",
+             "To put it on a phone, scan the QR code below"]
+  }[pf];
+  const label = { ios:"On iPhone or iPad", android:"On Android", desktop:"On this computer" }[pf];
+
+  return head("Get the App","account")+
+  '<div class="pad stack">'+
+    '<div class="card pad row" style="gap:14px">'+
+      '<img class="appicon" src="'+APP_ICON+'" alt="SSS Catering app icon">'+
+      '<div style="flex:1;min-width:0"><h3 style="font-size:17px">SSS Catering</h3>'+
+      '<div class="tiny">Festival pre-orders · installs like a normal app, no Play Store or App Store needed</div></div>'+
+    '</div>'+
+
+    (inst ? '<div class="notice good"><svg viewBox="0 0 24 24">'+ICO.check+'</svg><div><b>Already installed</b><br>You are running the installed app right now.</div></div>' : '')+
+
+    (deferredPrompt && !inst
+      ? '<button class="btn acc" data-act="doinstall">'+svg("down")+' Install App</button>'
+      : '')+
+
+    (!inst ? '<div class="card pad stack">'+
+      '<div class="eyebrow">'+esc(label)+'</div>'+
+      '<ol class="steps">'+STEPS.map(x=>'<li><span>'+x+'</span></li>').join("")+'</ol>'+
+    '</div>' : '')+
+
+    '<div class="card pad stack">'+
+      '<div class="eyebrow">Share with customers</div>'+
+      '<p class="tiny">Put your live web address in, then print the QR for the shop counter, the sweet boxes and your WhatsApp status.</p>'+
+      '<input class="inp" id="qrUrl" placeholder="https://ssscatering.in" value="'+esc(state.qrUrl||"")+'">'+
+      '<div class="qrbox" id="qrBox"></div>'+
+      '<div class="tiny" id="qrNote">Point any phone camera at the code — it opens the menu straight away.</div>'+
+    '</div>'+
+
+    '<div class="card pad stack">'+
+      '<div class="eyebrow">Not hosted yet?</div>'+
+      '<p class="tiny">Installing needs the app on a web address of your own. Drop the deployment folder onto Netlify Drop or Cloudflare Pages, point ssscatering.in at it, and this page turns into a real installable app — offline menu included.</p>'+
+      '<button class="btn out sm" style="width:100%" data-act="admtabgo" data-arg="spec">Read the go-live steps</button>'+
+    '</div>'+
+  '</div>';
+}
+function paintQR(){
+  const box = $("#qrBox"), note = $("#qrNote"); if(!box) return;
+  const url = (state.qrUrl||"").trim();
+  box.innerHTML = "";
+  if(!url){ box.innerHTML = '<div style="color:#8B9083;font-size:12px;text-align:center;padding:26px 8px">Your QR code appears here</div>'; return; }
+  const r = qrMatrix(url);
+  if(!r){ box.innerHTML = '<div style="color:#B03227;font-size:12px;text-align:center;padding:26px 8px">That address is too long for a QR code — a shorter domain will work</div>'; return; }
+  const q = 4, scale = 8, dim = (r.size + q*2) * scale;
+  const cv = document.createElement("canvas"); cv.width = cv.height = dim;
+  cv.setAttribute("role","img"); cv.setAttribute("aria-label","QR code for "+url);
+  const g = cv.getContext("2d");
+  g.fillStyle = "#ffffff"; g.fillRect(0,0,dim,dim);
+  g.fillStyle = "#111111";
+  for(let y=0;y<r.size;y++) for(let x=0;x<r.size;x++)
+    if(r.modules[y][x]) g.fillRect((x+q)*scale, (y+q)*scale, scale, scale);
+  box.appendChild(cv);
+  if(note) note.textContent = "Version "+r.version+" · error correction "+r.ec+" · point any phone camera at it";
+}
+
+/* ============================== SCREEN: ADMIN ============================== */
+const BASE = { orders:42, revenue:68400, slots:{"Morning 10–12":12,"Afternoon 2–4":18,"Evening 5–7":12} };
+function scAdmin(){
+  const live = state.orders.filter(o=>o.stage<4);
+  const liveRev = state.orders.reduce((a,o)=>a+o.paid,0);
+  const tabs = [["today","Today"],["production","Production"],["whatsapp","WhatsApp"],["spec","Build spec"]];
+  let body = "";
+
+  if(state.adminTab==="today"){
+    const slots = {...BASE.slots};
+    state.orders.forEach(o=>{ if(slots[o.slot]!==undefined) slots[o.slot]++; });
+    const max = Math.max(...Object.values(slots));
+    body = '<div class="kpis">'+
+      '<div class="kpi"><div class="v num">'+(BASE.orders+state.orders.length)+'</div><div class="k">Orders today</div></div>'+
+      '<div class="kpi"><div class="v num">'+INR(BASE.revenue+liveRev)+'</div><div class="k">Revenue</div></div>'+
+      '<div class="kpi"><div class="v num">'+live.length+'</div><div class="k">In kitchen</div></div>'+
+      '<div class="kpi"><div class="v num">'+FEST.filter(f=>fstatus(f)==="open").length+'</div><div class="k">Festivals open</div></div>'+
+    '</div>'+
+    '<div class="card pad stack"><div class="eyebrow">Orders by slot</div><div class="bars">'+
+      Object.entries(slots).map(([k,v])=>'<div class="bar"><span class="lbl">'+esc(k.split(" ")[0])+'</span><span class="t"><i style="width:'+Math.round(v/max*100)+'%"></i></span><span class="v num">'+v+'</span></div>').join("")+
+    '</div><div class="tiny">Baseline 42 orders from your sheet + orders placed in this session.</div></div>'+
+    '<div class="card pad stack"><div class="eyebrow">Live orders — tap to advance status</div>'+
+      state.orders.slice().reverse().map(o=>'<div class="row" style="gap:9px">'+
+        '<div style="flex:1;min-width:0"><b style="font-size:13px;font-family:var(--mono)">#'+esc(o.id)+'</b>'+
+        '<div class="tiny">'+esc(PROD[o.lines[0].pid].name)+' · '+fmtShort(o.date)+'</div></div>'+
+        '<span class="pill '+(o.stage>=4?"open":"soon")+'">'+(o.stage>=4?"Delivered":esc(STAGES[o.stage]))+'</span>'+
+        (o.stage<4?'<button class="btn out sm" data-act="advance" data-arg="'+o.id+'">Advance</button>':'')+
+      '</div>').join('<div class="divider"></div>')+
+    '</div>'+
+    '<div class="notice bad"><svg viewBox="0 0 24 24">'+ICO.alert+'</svg><div><b>Low stock alert</b><br>Ghee below 10 kg — reorder now.</div></div>'+
+    '<div class="card pad stack"><div class="eyebrow">Payment settings</div>'+
+      '<button class="radio" aria-checked="'+SETTINGS.cod+'" data-act="toggle" data-arg="cod"><span class="dot"></span><span class="t"><b>Accept cash / UPI on delivery</b><i>Currently allowed up to '+INR(SETTINGS.codLimit)+' per order</i></span></button>'+
+      (SETTINGS.cod ? '<div><label class="f">Cash-on-delivery cap</label><div class="optgrp">'+
+        [1000,2000,5000,999999].map(v=>'<button class="opt" aria-pressed="'+(SETTINGS.codLimit===v)+'" data-act="codcap" data-arg="'+v+'">'+(v>99999?"No cap":INR(v))+'</button>').join("")+
+      '</div></div>' : '')+
+      '<button class="radio" aria-checked="'+SETTINGS.fullOnDelivery+'" data-act="toggle" data-arg="fullOnDelivery"><span class="dot"></span><span class="t"><b>Full advance on home delivery</b><i>Your sheet&rsquo;s rule — 50% advance stays available for pickup</i></span></button>'+
+      '<div class="notice warn"><svg viewBox="0 0 24 24">'+ICO.alert+'</svg><div>Festival boxes are made to order. A cancelled COD hamper is stock you cannot resell — that is why the cap exists.</div></div>'+
+    '</div>'+
+    '<div class="card pad stack"><div class="eyebrow">Orders WhatsApp number</div>'+
+      '<b style="font-family:var(--mono);font-size:16px">'+esc(SETTINGS.waDisplay)+'</b>'+
+      '<div class="tiny">Every order summary lands here the moment a customer confirms.</div></div>';
+  }
+
+  if(state.adminTab==="production"){
+    const tally = {};
+    state.orders.filter(o=>o.stage<4).forEach(o=>o.lines.forEach(l=>{ tally[PROD[l.pid].name] = (tally[PROD[l.pid].name]||0)+l.qty; }));
+    body = '<div class="card pad stack"><div class="eyebrow">Raw material — for Nov 4</div>'+
+      '<table class="dt"><tr><th>Item</th><th style="text-align:right">Needed</th></tr>'+
+      [["Sugar","80 kg"],["Maida","50 kg"],["Ghee","30 kg"],["Besan","24 kg"],["Dry fruits","12 kg"]]
+        .map(([a,b])=>'<tr><td>'+a+'</td><td class="num" style="text-align:right">'+b+'</td></tr>').join("")+
+      '</table><div class="tiny">Quantities from your sheet. Wire this to the Inventory table (Qty_Needed_Per_Order) to make it calculate itself.</div></div>'+
+      '<div class="card pad stack"><div class="eyebrow">Boxes to pack</div>'+
+      (Object.keys(tally).length
+        ? '<table class="dt"><tr><th>Product</th><th style="text-align:right">Qty</th></tr>'+
+          Object.entries(tally).map(([k,v])=>'<tr><td>'+esc(k)+'</td><td class="num" style="text-align:right">'+v+'</td></tr>').join("")+'</table>'
+        : '<p class="muted">No open orders.</p>')+
+      '</div>'+
+      '<div class="card pad stack"><div class="eyebrow">Export</div>'+
+      '<textarea class="inp" rows="5" readonly style="font-family:var(--mono);font-size:11px" onclick="this.select()">'+
+        esc("OrderID,Product,Qty,Date,Slot,Method,Total\n"+state.orders.flatMap(o=>o.lines.map(l=>[o.id,PROD[l.pid].name,l.qty,o.date,o.slot,o.method,o.total].join(","))).join("\n"))+
+      '</textarea><div class="tiny">Tap to select all, then copy into Excel or Google Sheets.</div></div>';
+  }
+
+  if(state.adminTab==="whatsapp"){
+    const o = state.orders[state.orders.length-1];
+    const p = PROD[o.lines[0].pid];
+    const T = [
+      ["Order confirmed — store pickup", "Hi Thirumurugan, your "+p.name+" order #"+o.id+" is confirmed for "+fmt(o.date)+", "+o.slot+" pickup. Pay 50% advance: sss.in/pay/"+o.id],
+      ["Order confirmed — door delivery", "Hi Thirumurugan, your "+p.name+" order #"+o.id+" is confirmed for "+fmt(o.date)+", "+o.slot+" delivery. Pay 100% advance: sss.in/pay/"+o.id],
+      ["Cut-off reminder", "Reminder: Ramzan Biryani orders close tonight 8PM. Limited slots left! Order: sss.in/ramzan"],
+      ["Ready for pickup", "Your order is ready! Pickup from "+STORE+" between 5–7PM today."]
+    ];
+    body = '<div class="stack">'+
+      '<div class="card pad stack" style="border-color:var(--ok)">'+
+        '<div class="eyebrow" style="color:var(--ok)">Live — order summary to '+esc(SETTINGS.waDisplay)+'</div>'+
+        '<textarea class="inp" rows="10" readonly style="font-family:var(--mono);font-size:11px;line-height:1.5" onclick="this.select()">'+esc(waMessage(o))+'</textarea>'+
+        '<a class="btn" style="background:#25D366;color:#08240F;text-decoration:none" href="'+waLink(waMessage(o))+'" target="_blank" rel="noopener">Open in WhatsApp</a>'+
+      '</div>'+
+      '<div class="eyebrow" style="padding-top:4px">Customer templates from your sheet</div>'+
+      T.map(([t,m])=>'<div class="wa"><b>'+esc(t)+'</b>'+esc(m)+'</div>').join("")+
+      '<div class="tiny">Send via WhatsApp Business API, triggered by Zapier/Make on status change.</div></div>';
+  }
+
+  if(state.adminTab==="spec"){
+    body = '<div class="card pad stack"><div class="eyebrow">App menu structure</div>'+
+      '<div class="tree">Home\n├─ Upcoming Festivals\n├─ Diwali Specials\n├─ Ramzan Specials\n├─ Sweets Boxes\n├─ Savory Boxes\n├─ Biryani &amp; Meals\n└─ Corporate Gifting</div></div>'+
+    '<div class="card pad stack"><div class="eyebrow">Database tables</div><pre class="code">'+
+      esc("Users      Name, Mobile, Address, Past Orders\nProducts   Name, Price, Image, Festival_Tag, Cutoff_Date, Stock\nOrders     OrderID, UserID, Items, Date, Slot, Status, Payment\nFestivals  Name, Banner, Start_Date, End_Date\nInventory  Item, Qty_Needed_Per_Order")+
+    '</pre></div>'+
+    '<div class="card pad stack"><div class="eyebrow">Integration notes</div><ul class="inside">'+
+      ["Zapier / Make: orders → WhatsApp message automation",
+       "Payments: Razorpay plugin with partial payment enabled",
+       "Notifications: Firebase Push + WhatsApp Business API",
+       "Pincode check: serviceable pincodes in Google Sheets"].map(x=>'<li>'+esc(x)+'</li>').join("")+
+    '</ul></div>'+
+    '<div class="card pad stack"><div class="eyebrow">Going live</div>'+
+      '<div class="tiny" style="margin-bottom:2px">Stage 1 — this app, hosted as a static page. Orders arrive on WhatsApp '+esc(SETTINGS.waDisplay)+'. No server, no database, no monthly cost.</div>'+
+      '<ul class="inside">'+
+      ["Netlify Drop, Cloudflare Pages or GitHub Pages — free, upload the single HTML file",
+       "Point a domain such as ssscatering.in at it — about ₹800–1,200 a year",
+       "Orders open in WhatsApp pre-filled; you confirm and collect payment yourself",
+       "Limitation: the cart lives in the customer's browser, so there is no order history on your side beyond WhatsApp"].map(x=>'<li>'+esc(x)+'</li>').join("")+
+      '</ul>'+
+      '<div class="tiny" style="margin:8px 0 2px">Stage 2 — add a backend when order volume outgrows WhatsApp.</div>'+
+      '<ul class="inside">'+
+      ["Supabase or Firebase for the five tables above — free tier covers a first festival",
+       "Razorpay for online payment and partial advance (needs a registered business + PAN)",
+       "WhatsApp Business API via Zapier/Make for automatic confirmations and reminders",
+       "Only then is COD worth switching off — advance payment is what stops last-minute cancellations"].map(x=>'<li>'+esc(x)+'</li>').join("")+
+      '</ul></div>'+
+    '<div class="card pad stack"><div class="eyebrow">Open questions in the sheet</div><ul class="inside">'+
+      ["Diwali Family Hamper is ₹2,100 / 2 kg on the menu tab but ₹1,699 / 8–10 pax on the wireframe tab. App uses ₹2,100.",
+       "Early bird is 15% till Oct 15 on the home banner and 10% till Oct 20 on the Diwali tab. Both codes are live here.",
+       "Eid Mubarak Feast Box has no item list — marked 'Jaffer pls fill'.",
+       "Ugadi, Ram Navami, Akshaya Tritiya and Christmas have items but no combo names or prices.",
+       "'Daily Tiffin' appears on the home screen but has no menu anywhere in the sheet.",
+       "Festival dates are fixed text; Holi, Onam and Vinayaka Chaturthi shift every year — confirm each cycle.",
+       "The 'What's Inside' list on the wireframe tab has a broken #NAME? row.",
+       "The store is 'JP Nagar Branch' with Bengaluru pincodes, but the menu is Tamil-leaning — confirm the city and serviceable pincodes."].map(x=>'<li>'+esc(x)+'</li>').join("")+
+    '</ul></div>';
+  }
+
+  return head("Admin Dashboard","account")+
+    '<div class="tabs">'+tabs.map(([k,l])=>'<button class="tab" aria-selected="'+(state.adminTab===k)+'" data-act="admtab" data-arg="'+k+'">'+l+'</button>').join("")+'</div>'+
+    '<div class="pad stack">'+body+'</div>';
+}
+
+/* ============================== NAV + RENDER ============================== */
+const NAV = [["home","Home","home"],["menu","Menu","grid"],["orders","Orders","bag"],["offers","Offers","tag"],["account","Account","user"]];
+function renderNav(){
+  const cur = ["home","menu","product"].includes(state.screen) ? (state.screen==="home"?"home":"menu") : state.screen==="order"?"orders":(state.screen==="admin"||state.screen==="install")?"account":state.screen;
+  $("#nav").innerHTML = NAV.map(([k,l,i])=>'<button data-act="go" data-arg="'+k+'" '+(cur===k?'aria-current="page"':'')+'>'+svg(i)+
+    (k==="orders"&&state.orders.filter(o=>o.stage<4).length?'<span class="bdg num">'+state.orders.filter(o=>o.stage<4).length+'</span>':'')+
+    '<span>'+l+'</span></button>').join("");
+}
+function renderBar(){
+  const open = FEST.filter(f=>fstatus(f)==="open");
+  $("#subbar").innerHTML = '<svg viewBox="0 0 24 24">'+ICO.cal+'</svg>'+
+    '<span>Today <b>'+fmt(state.today)+'</b> · '+open.length+' festival'+(open.length===1?"":"s")+' taking orders</span>'+
+    '<button data-act="go" data-arg="account">Change date</button>';
+  const n = cartCount(), b = $("#cartBadge");
+  b.hidden = !n; b.textContent = n;
+}
+const SCREENS = { home:scHome, menu:scMenu, product:scProduct, cart:scCart, orders:scOrders,
+  order:scOrder, offers:scOffers, account:scAccount, admin:scAdmin, install:scInstall };
+function render(){
+  $("#scroll").innerHTML = (SCREENS[state.screen] || scHome)();
+  if(state.screen==="install") paintQR();
+  renderNav(); renderBar(); save();
+}
+
+/* ============================== EVENTS ============================== */
+document.addEventListener("click", e=>{
+  const el = e.target.closest("[data-act],[data-go]");
+  if(!el) return;
+  if(el.dataset.go){ go(el.dataset.go); return; }
+  const act = el.dataset.act, arg = el.dataset.arg || "";
+  const stop = ()=>{ e.preventDefault(); e.stopPropagation(); };
+
+  if(act==="go"){ go(arg); }
+  else if(act==="back"){ history.length; go(PROD[state.param] ? "menu:fest:"+PROD[state.param].fid : "menu"); }
+  else if(act==="filter"){ state.filter = arg; render(); }
+  else if(act==="admtab"){ state.adminTab = arg; render(); }
+  else if(act==="tiffin"){ stop(); toast("Daily Tiffin has no menu in the sheet yet"); }
+  else if(act==="notify"){ stop(); toast("We'll WhatsApp you when "+fest(arg).short+" opens"); }
+  else if(act==="share"||act==="wish"){ toast(act==="wish"?"Saved to wishlist":"Share link copied"); }
+  else if(act==="noop"){ toast("Opening WhatsApp support…"); }
+
+  else if(act==="add"){
+    stop();
+    const p = PROD[arg];
+    addToCart({ pid:p.id, size:0, opts:Object.fromEntries((p.options||[]).map(g=>[g.id,g.choices[0].v])), qty:1 });
+    toast(p.name+" added");
+    render();
+  }
+  else if(act==="size"){ state.draft.size = +arg; render(); }
+  else if(act==="opt"){ const [g,v] = arg.split("|"); state.draft.opts[g] = v; render(); }
+  else if(act==="pqty"){ state.draft.qty = Math.max(1, state.draft.qty + (+arg)); render(); }
+  else if(act==="addcart"){
+    addToCart({...state.draft, opts:{...state.draft.opts}});
+    toast("Added to cart"); go("cart");
+  }
+  else if(act==="qty"){ const [i,d] = arg.split("|"); const l = state.cart[+i];
+    l.qty += (+d); if(l.qty<1) state.cart.splice(+i,1); render(); }
+  else if(act==="rm"){ stop(); state.cart.splice(+arg,1); render(); }
+  else if(act==="method"){ state.co.method = arg; if(arg==="delivery") state.co.pay="full"; render(); }
+  else if(act==="slot"){ state.co.slot = arg; render(); }
+  else if(act==="pay"){ if(el.hasAttribute("disabled")) return; state.co.pay = arg; render(); }
+  else if(act==="applycpn"){ const v = ($("#cpnInp")||{}).value || ""; state.co.coupon = v.toUpperCase().trim();
+    render(); toast(COUPONS[state.co.coupon] ? "Coupon applied" : "Invalid code"); }
+  else if(act==="usecpn"){ state.co.coupon = arg; toast(arg+" applied to cart"); go("cart"); }
+  else if(act==="place"){ placeOrder(); }
+  else if(act==="advance"){ const o = state.orders.find(x=>x.id===arg); if(o&&o.stage<4){ o.stage++;
+      toast("WhatsApp sent: "+(o.stage>=4?"order delivered":STAGES[Math.min(o.stage,3)])); render(); } }
+  else if(act==="reorder"){ stop(); const o = state.orders.find(x=>x.id===arg);
+    o.lines.forEach(l=>addToCart({...l, opts:{...l.opts}}));
+    toast("Items added to cart"); go("cart"); }
+  else if(act==="setdate"){ state.today = D(arg); state.co.date=null; render(); toast("Date set to "+fmt(arg)); }
+  else if(act==="doinstall"){
+    if(!deferredPrompt){ toast("Use the steps below for your phone"); return; }
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then(r=>{ deferredPrompt=null;
+      toast(r && r.outcome==="accepted" ? "Installing…" : "Install dismissed"); render(); });
+  }
+  else if(act==="admtabgo"){ state.adminTab = arg; go("admin"); }
+  else if(act==="copywa"){ const ta = $("#waTxt"); if(ta){ ta.select();
+      try{ navigator.clipboard.writeText(ta.value); }catch(err){ try{ document.execCommand("copy"); }catch(e2){} }
+      toast("Order summary copied"); } }
+  else if(act==="codcap"){ SETTINGS.codLimit = +arg; render(); toast("COD cap set to "+(+arg>99999?"no limit":INR(+arg))); }
+  else if(act==="toggle"){ SETTINGS[arg] = !SETTINGS[arg]; render();
+      toast(arg==="cod" ? (SETTINGS.cod?"Cash on delivery ON":"Cash on delivery OFF") : "Setting updated"); }
+  else if(act==="reset"){ state.cart=[]; state.orders = seedOrders.map(o=>({...o})); state.today=D("2026-08-30");
+    state.co.coupon=""; state.co.date=null; toast("Demo data reset"); go("home"); }
+});
+
+document.addEventListener("input", e=>{
+  const t = e.target;
+  if(t.id==="pinInp"){ state.co.pin = t.value.replace(/\D/g,"").slice(0,6);
+    const tip = t.parentElement.querySelector(".tiny"); if(tip){
+      const ok = PINCODES.includes(state.co.pin);
+      tip.style.color = ok ? "var(--ok)" : "var(--alert)";
+      tip.textContent = state.co.pin.length<6 ? "Enter your 6-digit pincode" : ok ? "✓ We deliver to "+state.co.pin : "✕ Not serviceable yet — pickup available";
+    } }
+  else if(t.id==="addrInp"){ state.co.addr = t.value; }
+  else if(t.id==="nameInp"){ state.co.name = t.value; }
+  else if(t.id==="qrUrl"){ state.qrUrl = t.value; paintQR(); }
+  else if(t.id==="phoneInp"){
+    const v = t.value.replace(/\D/g,"").slice(0,10);
+    if(v!==t.value) t.value = v;
+    const was = state.co.phone.length===10, now = v.length===10;
+    state.co.phone = v;
+    if(was!==now) render(); else {
+      const tip = t.parentElement.querySelector(".tiny");
+      if(tip){ tip.style.color = now?"var(--ok)":"var(--ink-3)";
+        tip.textContent = now?"✓ Confirmation and updates come here":"We send order updates on WhatsApp"; }
+    }
+  }
+  else if(t.id==="cpnInp"){ state.co.coupon = t.value.toUpperCase(); }
+});
+document.addEventListener("change", e=>{
+  if(e.target.id==="coDate"){ state.co.date = e.target.value; render(); }
+  if(e.target.id==="simDate"){ state.today = D(e.target.value); state.co.date=null; render(); }
+});
+$("#cartBtn").addEventListener("click", ()=>go("cart"));
+$("#acctBtn").addEventListener("click", ()=>go("account"));
+
+/* ============================== WHATSAPP ============================== */
+function waMessage(o){
+  const b = o.bill || {sub:o.total, del:0, disc:0, pct:0};
+  const L = [];
+  L.push("*NEW ORDER  #"+o.id+"*");
+  L.push("SSS Catering — festival pre-order");
+  L.push("");
+  L.push("*Customer:* "+(o.name||"—"));
+  L.push("*WhatsApp:* +91 "+(o.phone||"—"));
+  L.push("");
+  L.push("*Items*");
+  o.lines.forEach(l=>{
+    const p = PROD[l.pid];
+    const opt = Object.values(l.opts||{}).filter(Boolean).join(", ");
+    L.push("• "+p.name+" ("+(p.sizes?p.sizes[l.size].label:p.serves)+")"+(opt?" — "+opt:"")+" × "+l.qty+" = "+INR(unitPrice(l)*l.qty));
+  });
+  L.push("");
+  L.push("*"+(o.method==="delivery"?"Delivery":"Pickup")+":* "+fmt(o.date)+", "+o.slot);
+  L.push("*"+(o.method==="delivery"?"Address":"Store")+":* "+o.addr);
+  L.push("");
+  L.push("Subtotal: "+INR(b.sub));
+  L.push("Delivery: "+(b.del?INR(b.del):"Free"));
+  if(b.disc) L.push("Discount ("+b.pct+"%): -"+INR(b.disc));
+  L.push("*Total: "+INR(o.total)+"*");
+  L.push("*Payment:* "+PAYLABEL[o.payMode||"full"]);
+  L.push(o.paid ? "Paid now: "+INR(o.paid)+(o.paid<o.total?"  |  Balance on "+(o.method==="delivery"?"delivery":"pickup")+": "+INR(o.total-o.paid):"")
+                : "*To collect on "+(o.method==="delivery"?"delivery":"pickup")+": "+INR(o.total)+"*");
+  return L.join("\n");
+}
+const waLink = txt => "https://wa.me/"+SETTINGS.waNumber+"?text="+encodeURIComponent(txt);
+
+/* ============================== ACTIONS ============================== */
+function addToCart(line){
+  const key = l => l.pid+"|"+l.size+"|"+JSON.stringify(l.opts||{});
+  const ex = state.cart.find(l=>key(l)===key(line));
+  if(ex) ex.qty += line.qty; else state.cart.push(line);
+}
+function placeOrder(){
+  const b = bill();
+  const f = fest(PROD[state.cart[0].pid].fid);
+  const id = f.short.replace(/[^A-Za-z]/g,"").slice(0,3).toUpperCase() + Math.floor(1000+Math.random()*8999);
+  const paid = state.co.pay==="cod" ? 0 : state.co.pay==="half" ? Math.round(b.total/2) : b.total;
+  state.orders.push({
+    id, placed:iso(state.today), lines:state.cart.map(l=>({...l})),
+    date:state.co.date, slot:state.co.slot, method:state.co.method,
+    addr: state.co.method==="delivery" ? state.co.addr : STORE,
+    name:state.co.name, phone:state.co.phone,
+    total:b.total, paid, payMode:state.co.pay,
+    bill:{sub:b.sub, del:b.del, disc:b.disc, pct:b.pct},
+    stage:0, coupon: state.co.coupon || null, fresh:true
+  });
+  state.cart = []; state.co.coupon=""; state.co.date=null;
+  toast(paid ? "Payment received — order "+id+" confirmed" : "Order "+id+" placed — pay on "+(state.co.method==="delivery"?"delivery":"pickup"));
+  go("order:"+id);
+}
+
+render();
+</script>
+
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("sw.js").catch(() => {});
+  });
+}
+</script>
+</body>
+</html>

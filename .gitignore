@@ -1,0 +1,16 @@
+# OS noise
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# Never commit these — they do not belong in a public repo
+.env
+.env.*
+*.key
+*.pem
+secrets.json
