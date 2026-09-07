@@ -1,7 +1,12 @@
 /* SSS Catering — offline shell. Bump CACHE after you edit index.html. */
-const CACHE = "sss-catering-v2";
+const CACHE = "sss-catering-v3";
 const ASSETS = ["./", "./index.html", "./manifest.webmanifest",
-                "./icon-192.png", "./icon-512.png", "./apple-touch-icon.png"];
+                "./icon-192.png", "./icon-512.png", "./apple-touch-icon.png",
+                "./images/festival-catering-hero.jpg",
+                "./images/indian-sweets.jpg",
+                "./images/indian-savouries.jpg",
+                "./images/south-indian-meal.jpg",
+                "./images/festive-gift-hamper.jpg"];
 
 self.addEventListener("install", e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(ASSETS)).then(() => self.skipWaiting()));
