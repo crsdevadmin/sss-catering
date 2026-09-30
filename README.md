@@ -4,16 +4,48 @@ Festival pre-ordering for SSS Catering: sweet boxes, savoury boxes, hampers,
 Sadhya and bulk catering across 11 festivals, with cut-off dates, delivery
 slots, part-payment and a kitchen admin panel.
 
-Plain HTML, CSS and JavaScript in a single file. No build step, no framework,
-no server, no database. It installs from the browser as an app — no Play Store
-and no App Store.
+Plain HTML, CSS and JavaScript on the frontend, with a dependency-free Node.js
+backend for Razorpay and SQLite order storage. It installs from the browser as
+an app — no Play Store and no App Store.
 
 ## Live site
 
 <!-- Replace after you enable GitHub Pages -->
 https://YOUR-USERNAME.github.io/sss-catering/
 
-## Hosting it on GitHub Pages
+## Running locally
+
+Node.js 22.5 or newer is required.
+
+1. Copy `.env.example` to `.env`.
+2. Add the Razorpay Test Mode Key ID, Key Secret and webhook secret.
+3. Run `npm start`.
+4. Open `http://localhost:3000`.
+
+The Razorpay secret is read only by the server. Never put it in `index.html`
+or commit `.env` to Git.
+
+## Razorpay configuration
+
+1. Generate Test Mode API keys in the Razorpay Dashboard.
+2. Set `RAZORPAY_KEY_ID` and `RAZORPAY_KEY_SECRET` in `.env`.
+3. Enable automatic payment capture in Razorpay. The backend also captures an
+   authorized payment as a fallback.
+4. Create a webhook at `https://YOUR-DOMAIN/api/webhooks/razorpay`.
+5. Subscribe to `payment.captured`, `payment.failed` and `refund.processed`.
+6. Put the same webhook signing secret in `RAZORPAY_WEBHOOK_SECRET`.
+7. Complete successful, failed and cancelled Test Mode payments before using
+   Live Mode keys.
+
+Orders are stored in `data/orders.sqlite`. This file must be included in the
+server's backup policy.
+
+## Hosting
+
+The live application now requires a Node.js host such as AWS Lightsail.
+GitHub Pages alone cannot securely create or verify Razorpay orders.
+
+### Legacy static-only instructions
 
 1. Push this folder to a **public** repository named `sss-catering`.
    (GitHub Pages on a private repo needs a paid plan.)
@@ -60,7 +92,9 @@ rules) are under **Account → Admin Dashboard → Today**.
 
 | File | What it is |
 | --- | --- |
-| `index.html` | The whole app — markup, styles, data and logic |
+| `index.html` | Customer app, cart and Razorpay Checkout UI |
+| `server.js` | Secure order creation, payment verification and webhook API |
+| `data/orders.sqlite` | Runtime order database (created automatically) |
 | `manifest.webmanifest` | Name, colours and icons used when installing |
 | `sw.js` | Offline cache. **Bump `CACHE` after editing `index.html`** |
 | `icon-192.png`, `icon-512.png` | App icons |
@@ -79,7 +113,7 @@ otherwise phones that already installed the app keep serving the old copy.
 
 ## Current limits
 
-The cart lives in the customer's own browser, so WhatsApp is the order book.
-There is no shared database and no payment gateway yet. The tables and the
-plan for adding them are inside the app under
-**Account → Admin Dashboard → Build spec**.
+Customer and payment orders are persisted in SQLite. The customer-facing order
+history is still cached on that customer's device, and the kitchen summary is
+sent through the WhatsApp button. A secured shared staff dashboard and
+automatic WhatsApp Business messages are separate additions.

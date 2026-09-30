@@ -486,8 +486,8 @@ const fest = id => FEST.find(f => f.id === id);
 
 const PINCODES = ["560078","560076","560069","560041","560011","560070","560062","560068","560085"];
 const COUPONS = {
-  DIWALI15:{ pct:15, note:"Diwali Early Bird — 15% off, till Oct 15", fid:"diwali" },
-  EARLYBIRD10:{ pct:10, note:"Diwali Early Bird — 10% off, till Oct 20", fid:"diwali" }
+  DIWALI15:{ pct:15, note:"Diwali Early Bird — 15% off, till Oct 15", fid:"diwali", expires:"2026-10-15" },
+  EARLYBIRD10:{ pct:10, note:"Diwali Early Bird — 10% off, till Oct 20", fid:"diwali", expires:"2026-10-20" }
 };
 const SLOTS = ["Morning 10–12","Afternoon 2–4","Evening 5–7"];
 const STORE = "JP Nagar Branch, Bengaluru";
@@ -502,6 +502,7 @@ const PAYLABEL = { cod:"Cash / UPI on delivery", half:"50% advance", full:"Paid 
 /* Staff view is reached at yoursite/#staff — it keeps the panel out of a customer's
    way. It is not a security boundary; this is a static page. */
 let STAFF = (() => { try{ return location.hash.toLowerCase() === "#staff"; }catch(e){ return false; } })();
+let checkoutBusy = false;
 const todayLocal = () => { const n=new Date(); return new Date(n.getFullYear(), n.getMonth(), n.getDate()); };
 
 const state = {
@@ -616,6 +617,7 @@ function earliestEvent(){
 function couponInfo(){
   const c = COUPONS[(state.co.coupon||"").toUpperCase().trim()];
   if(!c) return null;
+  if(c.expires && iso(state.today) > c.expires) return {bad:"This coupon has expired"};
   if(c.fid && !cartFestivals().includes(c.fid)) return {bad:"Valid on "+fest(c.fid).name+" items only"};
   return c;
 }
@@ -1134,7 +1136,9 @@ function cartCTA(){
   const v = coValid();
   return '<div style="flex:1"><div class="tiny">'+(v.payNow?"Pay now":"Pay on "+(state.co.method==="delivery"?"delivery":"pickup"))+'</div>'+
     '<b class="num" style="font-size:17px;font-family:Fraunces,Georgia,serif">'+INR(v.payNow||v.b.total)+'</b></div>'+
-    (v.blocked.length || v.missing
+    (checkoutBusy
+      ? '<button class="btn" disabled style="width:auto;padding:12px 20px">Processing…</button>'
+      : v.blocked.length || v.missing
       ? '<button class="btn" disabled style="width:auto;padding:12px 20px">'+(v.blocked.length?"Cut-off passed":v.missing)+'</button>'
       : '<button class="btn acc" style="width:auto;padding:12px 22px" data-act="place">'+(v.payNow?"Proceed to Pay":"Place Order")+'</button>');
 }
@@ -1163,7 +1167,7 @@ function scOrder(){
   const p0 = PROD[o.lines[0].pid], f = fest(p0.fid);
   const stage = Math.min(o.stage,3), delivered = o.stage>=4;
   const feedItems = [
-    [0,"Order confirmed. 50% advance received."],
+    [0, o.paid ? "Order confirmed. "+(o.paid<o.total?"Advance":"Full payment")+" received." : "Order confirmed. Payment due on "+(o.method==="delivery"?"delivery":"pickup")+"."],
     [1,"Chef started preparing your order"],
     [2,"Your order is packed and ready"],
     [3, o.method==="delivery" ? "Out for delivery — rider assigned" : "Ready for pickup at "+STORE]
@@ -1631,23 +1635,83 @@ function addToCart(line){
   const ex = state.cart.find(l=>key(l)===key(line));
   if(ex) ex.qty += line.qty; else state.cart.push(line);
 }
-function placeOrder(){
-  const b = bill();
-  const f = fest(PROD[state.cart[0].pid].fid);
-  const id = f.short.replace(/[^A-Za-z]/g,"").slice(0,3).toUpperCase() + Math.floor(1000+Math.random()*8999);
-  const paid = state.co.pay==="cod" ? 0 : state.co.pay==="half" ? Math.round(b.total/2) : b.total;
-  state.orders.push({
-    id, placed:iso(state.today), lines:state.cart.map(l=>({...l})),
-    date:state.co.date, slot:state.co.slot, method:state.co.method,
-    addr: state.co.method==="delivery" ? state.co.addr : STORE,
-    name:state.co.name, phone:state.co.phone,
-    total:b.total, paid, payMode:state.co.pay,
-    bill:{sub:b.sub, del:b.del, disc:b.disc, pct:b.pct},
-    stage:0, coupon: state.co.coupon || null, fresh:true
-  });
+function finishOrder(order){
+  order.fresh = true;
+  state.orders.push(order);
   state.cart = []; state.co.coupon=""; state.co.date=null;
-  toast(paid ? "Payment received — order "+id+" confirmed" : "Order "+id+" placed — pay on "+(state.co.method==="delivery"?"delivery":"pickup"));
-  go("order:"+id);
+  checkoutBusy = false;
+  toast(order.paid ? "Payment received — order "+order.id+" confirmed" : "Order "+order.id+" placed — pay on "+(order.method==="delivery"?"delivery":"pickup"));
+  go("order:"+order.id);
+}
+
+function apiError(payload){
+  return new Error((payload && payload.error) || "The payment service is unavailable. Please try again.");
+}
+
+function loadRazorpay(){
+  if(window.Razorpay) return Promise.resolve();
+  return new Promise((resolve,reject)=>{
+    const existing = document.querySelector('script[data-razorpay-checkout]');
+    if(existing){
+      existing.addEventListener("load",resolve,{once:true});
+      existing.addEventListener("error",()=>reject(new Error("Unable to load Razorpay Checkout")),{once:true});
+      return;
+    }
+    const script = document.createElement("script");
+    script.src = "https://checkout.razorpay.com/v1/checkout.js";
+    script.dataset.razorpayCheckout = "true";
+    script.onload = resolve;
+    script.onerror = ()=>reject(new Error("Unable to load Razorpay Checkout"));
+    document.head.appendChild(script);
+  });
+}
+
+async function placeOrder(){
+  if(checkoutBusy) return;
+  const valid = coValid();
+  if(valid.blocked.length || valid.missing) return;
+  checkoutBusy = true; render();
+  try{
+    const response = await fetch("/api/orders", {
+      method:"POST", headers:{"content-type":"application/json"},
+      body:JSON.stringify({
+        lines:state.cart, date:state.co.date, slot:state.co.slot, method:state.co.method,
+        pin:state.co.pin, addr:state.co.addr, name:state.co.name, phone:state.co.phone,
+        coupon:state.co.coupon, payMode:state.co.pay
+      })
+    });
+    const created = await response.json().catch(()=>({}));
+    if(!response.ok) throw apiError(created);
+    if(!created.requiresPayment){ finishOrder(created.order); return; }
+
+    await loadRazorpay();
+    const checkout = new Razorpay({
+      key:created.keyId, amount:created.amount, currency:created.currency,
+      name:created.businessName, description:created.description, order_id:created.razorpayOrderId,
+      prefill:created.customer, theme:{color:"#123A2B"}, retry:{enabled:true},
+      handler:async payment=>{
+        try{
+          const verifiedResponse = await fetch("/api/payments/verify", {
+            method:"POST", headers:{"content-type":"application/json"},
+            body:JSON.stringify({
+              internalOrderId:created.internalOrderId,
+              razorpayOrderId:payment.razorpay_order_id,
+              razorpayPaymentId:payment.razorpay_payment_id,
+              razorpaySignature:payment.razorpay_signature
+            })
+          });
+          const verified = await verifiedResponse.json().catch(()=>({}));
+          if(!verifiedResponse.ok) throw apiError(verified);
+          finishOrder(verified.order);
+        }catch(error){ checkoutBusy=false; render(); toast(error.message); }
+      },
+      modal:{ ondismiss:()=>{ checkoutBusy=false; render(); toast("Payment cancelled — your cart is still saved"); } }
+    });
+    checkout.on("payment.failed", response=>toast(response.error?.description || "Payment failed. Please try again."));
+    checkout.open();
+  }catch(error){
+    checkoutBusy=false; render(); toast(error.message || "Unable to start payment");
+  }
 }
 
 render();

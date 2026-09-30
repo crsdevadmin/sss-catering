@@ -11,6 +11,12 @@ desktop.ini
 # Never commit these — they do not belong in a public repo
 .env
 .env.*
+!.env.example
 *.key
 *.pem
 secrets.json
+.env
+data/
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
