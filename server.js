@@ -14,7 +14,6 @@ const WEBHOOK_SECRET = process.env.RAZORPAY_WEBHOOK_SECRET || "";
 
 const DELIVERY_CHARGE = 80;
 const COD_LIMIT = 2000;
-const PINCODES = new Set(["560078", "560076", "560069", "560041", "560011", "560070", "560062", "560068", "560085"]);
 
 const CATALOG = {
   "sankranti-sweet-box": { price:699, festival:"pongal" },
@@ -107,8 +106,8 @@ function calculateOrder(input) {
   if (name.length < 2) throw Object.assign(new Error("Customer name is required"), { status:400 });
   if (!/^\d{10}$/.test(phone)) throw Object.assign(new Error("A valid 10-digit phone number is required"), { status:400 });
   if (!method || !payMode) throw Object.assign(new Error("Delivery or payment method is invalid"), { status:400 });
-  if (method === "delivery" && (!PINCODES.has(pin) || addr.length < 10)) {
-    throw Object.assign(new Error("A serviceable delivery address is required"), { status:400 });
+  if (method === "delivery" && (!/^\d{6}$/.test(pin) || addr.length < 10)) {
+    throw Object.assign(new Error("A valid delivery address and 6-digit pincode are required"), { status:400 });
   }
   if (method === "delivery" && payMode !== "full") {
     throw Object.assign(new Error("Home delivery requires full advance payment"), { status:400 });

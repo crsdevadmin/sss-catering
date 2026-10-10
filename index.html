@@ -484,7 +484,7 @@ const PROD = {};
 FEST.forEach(f => f.items.forEach(p => { p.fid = f.id; PROD[p.id] = p; }));
 const fest = id => FEST.find(f => f.id === id);
 
-const PINCODES = ["560078","560076","560069","560041","560011","560070","560062","560068","560085"];
+const validPincode = pin => /^\d{6}$/.test(String(pin||""));
 const COUPONS = {
   DIWALI15:{ pct:15, note:"Diwali Early Bird — 15% off, till Oct 15", fid:"diwali", expires:"2026-10-15" },
   EARLYBIRD10:{ pct:10, note:"Diwali Early Bird — 10% off, till Oct 20", fid:"diwali", expires:"2026-10-20" }
@@ -991,12 +991,12 @@ function scProduct(){
 
     '<div><div class="eyebrow" style="margin-bottom:8px">Delivery type</div>'+
       '<div class="stack" style="gap:8px">'+
-        '<button class="radio" aria-checked="'+(state.co.method==="delivery")+'" data-act="method" data-arg="delivery"><span class="dot"></span><span class="t"><b>Home Delivery</b><i>₹80 · Bengaluru serviceable pincodes</i></span></button>'+
+        '<button class="radio" aria-checked="'+(state.co.method==="delivery")+'" data-act="method" data-arg="delivery"><span class="dot"></span><span class="t"><b>Home Delivery</b><i>₹80 · All valid Indian pincodes</i></span></button>'+
         '<button class="radio" aria-checked="'+(state.co.method==="pickup")+'" data-act="method" data-arg="pickup"><span class="dot"></span><span class="t"><b>Store Pickup — Free</b><i>'+esc(STORE)+'</i></span></button>'+
       '</div>'+
       (state.co.method==="delivery" ? '<div style="margin-top:9px"><input class="inp" id="pinInp" placeholder="Enter pincode" inputmode="numeric" maxlength="6" value="'+esc(state.co.pin)+'">'+
-        '<div class="tiny" style="margin-top:6px;color:'+(PINCODES.includes(state.co.pin)?"var(--ok)":"var(--alert)")+'">'+
-        (state.co.pin.length<6 ? "Enter your 6-digit pincode" : PINCODES.includes(state.co.pin) ? "✓ We deliver to "+esc(state.co.pin) : "✕ Not serviceable yet — pickup available")+'</div></div>' : '')+
+        '<div class="tiny" style="margin-top:6px;color:'+(validPincode(state.co.pin)?"var(--ok)":"var(--alert)")+'">'+
+        (state.co.pin.length<6 ? "Enter your 6-digit pincode" : validPincode(state.co.pin) ? "✓ We deliver to "+esc(state.co.pin) : "Enter a valid 6-digit pincode")+'</div></div>' : '')+
     '</div>'+
 
     (p.note ? '<div class="notice warn"><svg viewBox="0 0 24 24">'+ICO.alert+'</svg><div>'+esc(p.note)+'</div></div>' : '')+
@@ -1036,7 +1036,7 @@ function scCart(){
   if(state.co.pay==="cod"  && !codOK)  state.co.pay = halfOK ? "half" : "full";
   if(state.co.pay==="half" && !halfOK) state.co.pay = "full";
   const phoneOK = (state.co.phone||"").replace(/\D/g,"").length === 10;
-  const pinOK2  = state.co.method==="pickup" || PINCODES.includes(state.co.pin);
+  const pinOK2  = state.co.method==="pickup" || validPincode(state.co.pin);
   const blocked = cartFestivals().map(fest).filter(f => state.today > D(f.cutoff));
 
   return head("Your Cart","menu")+
@@ -1079,7 +1079,7 @@ function scCart(){
       (state.co.method==="delivery" ? '<textarea class="inp" id="addrInp" rows="2" placeholder="Door no, street, area, city">'+esc(state.co.addr||"")+'</textarea>'+
         '<input class="inp" id="pinInp" placeholder="Pincode" inputmode="numeric" maxlength="6" value="'+esc(state.co.pin||"")+'">'+
         '<div class="tiny" style="color:'+(pinOK2?"var(--ok)":(state.co.pin||"").length<6?"var(--ink-3)":"var(--alert)")+'">'+
-        (pinOK2 ? "✓ We deliver to "+esc(state.co.pin) : (state.co.pin||"").length<6 ? "Enter your 6-digit pincode" : "✕ "+esc(state.co.pin)+" is not serviceable — store pickup is free")+'</div>' : '')+
+        (pinOK2 ? "✓ We deliver to "+esc(state.co.pin) : (state.co.pin||"").length<6 ? "Enter your 6-digit pincode" : "Enter a valid 6-digit pincode")+'</div>' : '')+
       '<button class="radio" aria-checked="'+(state.co.method==="pickup")+'" data-act="method" data-arg="pickup"><span class="dot"></span><span class="t"><b>Store Pickup — Free</b><i>'+esc(STORE)+'</i></span></button>'+
     '</div>'+
 
@@ -1124,12 +1124,12 @@ function coValid(){
   const phoneOK = (state.co.phone||"").replace(/\D/g,"").length === 10;
   const pickup  = state.co.method==="pickup";
   const addrOK  = pickup || (state.co.addr||"").trim().length >= 10;
-  const pinOK2  = pickup || PINCODES.includes(state.co.pin);
+  const pinOK2  = pickup || validPincode(state.co.pin);
   const blocked = cartFestivals().map(fest).filter(f => state.today > D(f.cutoff));
   const missing = !state.cart.length ? "Cart is empty"
     : !nameOK ? "Add your name" : !phoneOK ? "Add your number"
     : !addrOK ? "Add your address"
-    : !pinOK2 ? ((state.co.pin||"").length<6 ? "Add your pincode" : "Pincode not serviceable") : null;
+    : !pinOK2 ? ((state.co.pin||"").length<6 ? "Add your pincode" : "Invalid pincode") : null;
   return { b, codOK, halfOK, payNow, nameOK, phoneOK, addrOK, pinOK2, blocked, missing };
 }
 function cartCTA(){
@@ -1567,9 +1567,9 @@ document.addEventListener("input", e=>{
   const t = e.target;
   if(t.id==="pinInp"){ state.co.pin = t.value.replace(/\D/g,"").slice(0,6);
     const tip = t.parentElement.querySelector(".tiny"); if(tip){
-      const ok = PINCODES.includes(state.co.pin);
+      const ok = validPincode(state.co.pin);
       tip.style.color = ok ? "var(--ok)" : "var(--alert)";
-      tip.textContent = state.co.pin.length<6 ? "Enter your 6-digit pincode" : ok ? "✓ We deliver to "+state.co.pin : "✕ Not serviceable yet — pickup available";
+      tip.textContent = state.co.pin.length<6 ? "Enter your 6-digit pincode" : ok ? "✓ We deliver to "+state.co.pin : "Enter a valid 6-digit pincode";
     }
     save(); refreshCTA(); }
   else if(t.id==="addrInp"){ state.co.addr = t.value; save(); refreshCTA(); }

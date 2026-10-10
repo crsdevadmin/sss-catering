@@ -15,8 +15,17 @@ test("server calculates the advance and ignores browser prices", () => {
   assert.equal(order.amountDue, 899);
 });
 
-test("delivery requires full payment and a serviceable address", () => {
-  assert.throws(() => calculateOrder({ ...base, method:"delivery" }), /requires full advance|serviceable delivery/);
+test("delivery requires full payment and a valid address", () => {
+  assert.throws(() => calculateOrder({ ...base, method:"delivery" }), /requires full advance|valid delivery address/);
+});
+
+test("delivery accepts any valid six-digit Indian pincode", () => {
+  const order = calculateOrder({
+    ...base, method:"delivery", payMode:"full", pin:"600001",
+    addr:"12 Test Street, Chennai"
+  });
+  assert.equal(order.pin, "600001");
+  assert.equal(order.bill.del, 80);
 });
 
 test("COD limit is enforced by the server", () => {

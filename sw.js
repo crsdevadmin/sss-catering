@@ -1,5 +1,5 @@
 /* SSS Catering — offline shell. Bump CACHE after you edit index.html. */
-const CACHE = "sss-catering-v4";
+const CACHE = "sss-catering-v5";
 const ASSETS = ["./", "./index.html", "./manifest.webmanifest",
                 "./icon-192.png", "./icon-512.png", "./apple-touch-icon.png",
                 "./images/festival-catering-hero.jpg",
