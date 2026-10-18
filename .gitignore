@@ -7,6 +7,8 @@ desktop.ini
 .vscode/
 .idea/
 *.swp
+node_modules/
+.tools/
 
 # Never commit these — they do not belong in a public repo
 .env

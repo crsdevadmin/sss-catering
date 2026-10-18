@@ -4,6 +4,7 @@ import { DatabaseSync } from "node:sqlite";
 import { existsSync, mkdirSync, readFileSync } from "node:fs";
 import { extname, join, normalize, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { Firestore } from "@google-cloud/firestore";
 
 const ROOT = fileURLToPath(new URL(".", import.meta.url));
 const PORT = Number(process.env.PORT || 3000);
@@ -11,6 +12,10 @@ const DATA_DIR = resolve(ROOT, process.env.DATA_DIR || "data");
 const KEY_ID = process.env.RAZORPAY_KEY_ID || "";
 const KEY_SECRET = process.env.RAZORPAY_KEY_SECRET || "";
 const WEBHOOK_SECRET = process.env.RAZORPAY_WEBHOOK_SECRET || "";
+const USE_FIRESTORE = process.env.STORAGE_BACKEND === "firestore" || Boolean(process.env.K_SERVICE);
+const ALLOWED_ORIGINS = new Set((process.env.ALLOWED_ORIGINS ||
+  "https://ssscatering.com,https://www.ssscatering.com,https://crsdevadmin.github.io")
+  .split(",").map(value => value.trim()).filter(Boolean));
 
 const DELIVERY_CHARGE = 80;
 const COD_LIMIT = 2000;
@@ -41,9 +46,14 @@ const COUPONS = {
   EARLYBIRD10: { pct:10, festival:"diwali", expires:"2026-10-20" }
 };
 
-mkdirSync(DATA_DIR, { recursive:true });
-const db = new DatabaseSync(join(DATA_DIR, "orders.sqlite"));
-db.exec(`
+let db = null;
+let firestore = null;
+if (USE_FIRESTORE) {
+  firestore = new Firestore();
+} else {
+  mkdirSync(DATA_DIR, { recursive:true });
+  db = new DatabaseSync(join(DATA_DIR, "orders.sqlite"));
+  db.exec(`
   PRAGMA journal_mode=WAL;
   CREATE TABLE IF NOT EXISTS orders (
     id TEXT PRIMARY KEY,
@@ -60,12 +70,40 @@ db.exec(`
     razorpay_payment_id TEXT UNIQUE
   );
   CREATE INDEX IF NOT EXISTS idx_orders_razorpay_order ON orders(razorpay_order_id);
-`);
+  `);
+}
+
+function orderDocument(id) {
+  return firestore.collection("orders").doc(id);
+}
+
+async function findOrder(id) {
+  if (!USE_FIRESTORE) return db.prepare("SELECT * FROM orders WHERE id = ?").get(id);
+  const snapshot = await orderDocument(id).get();
+  return snapshot.exists ? snapshot.data() : null;
+}
+
+async function updateOrder(id, values) {
+  if (USE_FIRESTORE) return orderDocument(id).update(values);
+  const entries = Object.entries(values);
+  const assignments = entries.map(([key]) => `${key}=?`).join(", ");
+  db.prepare(`UPDATE orders SET ${assignments} WHERE id=?`).run(...entries.map(([, value]) => value), id);
+}
 
 function json(res, status, value) {
   const body = JSON.stringify(value);
   res.writeHead(status, { "content-type":"application/json; charset=utf-8", "cache-control":"no-store" });
   res.end(body);
+}
+
+function applyCors(req, res) {
+  const origin = req.headers.origin;
+  if (origin && ALLOWED_ORIGINS.has(origin)) {
+    res.setHeader("access-control-allow-origin", origin);
+    res.setHeader("vary", "Origin");
+    res.setHeader("access-control-allow-methods", "GET, POST, OPTIONS");
+    res.setHeader("access-control-allow-headers", "content-type, x-razorpay-signature");
+  }
 }
 
 function readBody(req, limit = 128 * 1024) {
@@ -166,8 +204,16 @@ function newOrderId() {
   return `SSS${Date.now().toString(36).toUpperCase()}${randomBytes(2).toString("hex").toUpperCase()}`;
 }
 
-function saveOrder(order, status, razorpayOrderId = null) {
+async function saveOrder(order, status, razorpayOrderId = null) {
   const now = new Date().toISOString();
+  if (USE_FIRESTORE) {
+    return orderDocument(order.id).create({
+      id:order.id, created_at:now, updated_at:now, status,
+      customer_name:order.name, customer_phone:order.phone, order_json:JSON.stringify(order),
+      total_rupees:order.total, amount_due_rupees:order.amountDue, amount_paid_rupees:0,
+      razorpay_order_id:razorpayOrderId, razorpay_payment_id:null
+    });
+  }
   db.prepare(`INSERT INTO orders
     (id, created_at, updated_at, status, customer_name, customer_phone, order_json,
      total_rupees, amount_due_rupees, amount_paid_rupees, razorpay_order_id)
@@ -214,7 +260,7 @@ async function createOrder(req, res) {
   order.placed = new Date().toISOString().slice(0, 10);
 
   if (order.payMode === "cod") {
-    saveOrder(order, "cod_confirmed");
+    await saveOrder(order, "cod_confirmed");
     return json(res, 201, { requiresPayment:false, order:publicOrder(order, 0, "cod_confirmed") });
   }
 
@@ -227,7 +273,7 @@ async function createOrder(req, res) {
       notes:{ internal_order_id:order.id, customer_phone:order.phone }
     })
   });
-  saveOrder(order, "payment_pending", gatewayOrder.id);
+  await saveOrder(order, "payment_pending", gatewayOrder.id);
   json(res, 201, {
     requiresPayment:true,
     keyId:KEY_ID,
@@ -244,7 +290,7 @@ async function createOrder(req, res) {
 async function verifyPayment(req, res) {
   const body = parseJson(await readBody(req));
   const internalId = cleanText(body.internalOrderId, 80);
-  const row = db.prepare("SELECT * FROM orders WHERE id = ?").get(internalId);
+  const row = await findOrder(internalId);
   if (!row) return json(res, 404, { error:"Order not found" });
   if (row.razorpay_order_id !== body.razorpayOrderId) return json(res, 400, { error:"Payment does not match this order" });
   const expected = createHmac("sha256", KEY_SECRET)
@@ -263,8 +309,10 @@ async function verifyPayment(req, res) {
   }
   if (payment.status !== "captured") return json(res, 409, { error:"Payment is still processing. Please check again shortly." });
 
-  db.prepare(`UPDATE orders SET status='paid', amount_paid_rupees=?, razorpay_payment_id=?, updated_at=? WHERE id=?`)
-    .run(row.amount_due_rupees, payment.id, new Date().toISOString(), internalId);
+  await updateOrder(internalId, {
+    status:"paid", amount_paid_rupees:row.amount_due_rupees,
+    razorpay_payment_id:payment.id, updated_at:new Date().toISOString()
+  });
   const order = JSON.parse(row.order_json);
   json(res, 200, { order:publicOrder(order, row.amount_due_rupees, "paid") });
 }
@@ -277,15 +325,37 @@ async function webhook(req, res) {
   const event = parseJson(raw);
   const payment = event?.payload?.payment?.entity;
   if (event.event === "payment.captured" && payment?.order_id) {
-    db.prepare(`UPDATE orders SET status='paid', amount_paid_rupees=amount_due_rupees,
-      razorpay_payment_id=COALESCE(razorpay_payment_id, ?), updated_at=? WHERE razorpay_order_id=?`)
-      .run(payment.id, new Date().toISOString(), payment.order_id);
+    if (USE_FIRESTORE) {
+      const matches = await firestore.collection("orders").where("razorpay_order_id", "==", payment.order_id).limit(1).get();
+      if (!matches.empty) {
+        const doc = matches.docs[0];
+        const data = doc.data();
+        await doc.ref.update({ status:"paid", amount_paid_rupees:data.amount_due_rupees,
+          razorpay_payment_id:data.razorpay_payment_id || payment.id, updated_at:new Date().toISOString() });
+      }
+    } else {
+      db.prepare(`UPDATE orders SET status='paid', amount_paid_rupees=amount_due_rupees,
+        razorpay_payment_id=COALESCE(razorpay_payment_id, ?), updated_at=? WHERE razorpay_order_id=?`)
+        .run(payment.id, new Date().toISOString(), payment.order_id);
+    }
   } else if (event.event === "payment.failed" && payment?.order_id) {
-    db.prepare(`UPDATE orders SET status='payment_failed', updated_at=? WHERE razorpay_order_id=? AND status!='paid'`)
-      .run(new Date().toISOString(), payment.order_id);
+    if (USE_FIRESTORE) {
+      const matches = await firestore.collection("orders").where("razorpay_order_id", "==", payment.order_id).limit(1).get();
+      if (!matches.empty && matches.docs[0].data().status !== "paid") {
+        await matches.docs[0].ref.update({ status:"payment_failed", updated_at:new Date().toISOString() });
+      }
+    } else {
+      db.prepare(`UPDATE orders SET status='payment_failed', updated_at=? WHERE razorpay_order_id=? AND status!='paid'`)
+        .run(new Date().toISOString(), payment.order_id);
+    }
   } else if (event.event === "refund.processed" && payment?.id) {
-    db.prepare(`UPDATE orders SET status='refunded', updated_at=? WHERE razorpay_payment_id=?`)
-      .run(new Date().toISOString(), payment.id);
+    if (USE_FIRESTORE) {
+      const matches = await firestore.collection("orders").where("razorpay_payment_id", "==", payment.id).limit(1).get();
+      if (!matches.empty) await matches.docs[0].ref.update({ status:"refunded", updated_at:new Date().toISOString() });
+    } else {
+      db.prepare(`UPDATE orders SET status='refunded', updated_at=? WHERE razorpay_payment_id=?`)
+        .run(new Date().toISOString(), payment.id);
+    }
   }
   json(res, 200, { received:true });
 }
@@ -313,7 +383,10 @@ function staticFile(req, res) {
 
 export const server = createServer(async (req, res) => {
   try {
+    applyCors(req, res);
     const path = new URL(req.url, "http://localhost").pathname;
+    if (req.method === "OPTIONS") { res.writeHead(204); return res.end(); }
+    if (req.method === "GET" && path === "/health") return json(res, 200, { ok:true, storage:USE_FIRESTORE ? "firestore" : "sqlite" });
     if (req.method === "POST" && path === "/api/orders") return await createOrder(req, res);
     if (req.method === "POST" && path === "/api/payments/verify") return await verifyPayment(req, res);
     if (req.method === "POST" && path === "/api/webhooks/razorpay") return await webhook(req, res);

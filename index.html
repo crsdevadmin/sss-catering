@@ -1648,6 +1648,8 @@ function apiError(payload){
   return new Error((payload && payload.error) || "The payment service is unavailable. Please try again.");
 }
 
+const API_BASE = window.SSS_API_BASE || "";
+
 function loadRazorpay(){
   if(window.Razorpay) return Promise.resolve();
   return new Promise((resolve,reject)=>{
@@ -1672,7 +1674,7 @@ async function placeOrder(){
   if(valid.blocked.length || valid.missing) return;
   checkoutBusy = true; render();
   try{
-    const response = await fetch("/api/orders", {
+    const response = await fetch(API_BASE+"/api/orders", {
       method:"POST", headers:{"content-type":"application/json"},
       body:JSON.stringify({
         lines:state.cart, date:state.co.date, slot:state.co.slot, method:state.co.method,
@@ -1691,7 +1693,7 @@ async function placeOrder(){
       prefill:created.customer, theme:{color:"#123A2B"}, retry:{enabled:true},
       handler:async payment=>{
         try{
-          const verifiedResponse = await fetch("/api/payments/verify", {
+          const verifiedResponse = await fetch(API_BASE+"/api/payments/verify", {
             method:"POST", headers:{"content-type":"application/json"},
             body:JSON.stringify({
               internalOrderId:created.internalOrderId,
