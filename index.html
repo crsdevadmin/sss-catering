@@ -1648,7 +1648,7 @@ function apiError(payload){
   return new Error((payload && payload.error) || "The payment service is unavailable. Please try again.");
 }
 
-const API_BASE = window.SSS_API_BASE || "https://sss-catering-273254118258.europe-west1.run.app";
+const API_BASE = window.SSS_API_BASE || "https://sss-catering-api-273254118258.asia-south1.run.app";
 
 function loadRazorpay(){
   if(window.Razorpay) return Promise.resolve();
